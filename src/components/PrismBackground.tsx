@@ -17,6 +17,11 @@ export default function PrismBackground() {
         pointerEvents: "none",
         opacity: 0.75,
         isolation: "isolate",
+        // 하단부 청록색 강도 완화: 위쪽 60%는 풀 강도, 아래로 갈수록 페이드
+        maskImage:
+          "linear-gradient(to bottom, black 0%, black 55%, rgba(0,0,0,0.5) 85%, rgba(0,0,0,0.2) 100%)",
+        WebkitMaskImage:
+          "linear-gradient(to bottom, black 0%, black 55%, rgba(0,0,0,0.5) 85%, rgba(0,0,0,0.2) 100%)",
       }}
       aria-hidden
     >
