@@ -17,11 +17,11 @@ export default function PrismBackground() {
         pointerEvents: "none",
         opacity: 0.75,
         isolation: "isolate",
-        // 하단부 청록색 강도 완화: 위쪽 60%는 풀 강도, 아래로 갈수록 페이드
-        maskImage:
-          "linear-gradient(to bottom, black 0%, black 55%, rgba(0,0,0,0.5) 85%, rgba(0,0,0,0.2) 100%)",
-        WebkitMaskImage:
-          "linear-gradient(to bottom, black 0%, black 55%, rgba(0,0,0,0.5) 85%, rgba(0,0,0,0.2) 100%)",
+        // 세로: 하단부 더 완화 | 가로: 양옆 막대 아주 약간 세게
+        maskImage: `linear-gradient(to bottom, black 0%, black 42%, rgba(0,0,0,0.4) 72%, rgba(0,0,0,0.05) 100%),
+          linear-gradient(to right, black 0%, rgba(0,0,0,0.92) 25%, rgba(0,0,0,0.86) 50%, rgba(0,0,0,0.92) 75%, black 100%)`,
+        WebkitMaskImage: `linear-gradient(to bottom, black 0%, black 42%, rgba(0,0,0,0.4) 72%, rgba(0,0,0,0.05) 100%),
+          linear-gradient(to right, black 0%, rgba(0,0,0,0.92) 25%, rgba(0,0,0,0.86) 50%, rgba(0,0,0,0.92) 75%, black 100%)`,
       }}
       aria-hidden
     >
