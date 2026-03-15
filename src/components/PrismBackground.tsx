@@ -3,10 +3,8 @@
 import Prism from "./Prism";
 
 /**
- * 전체 페이지 배경용 Prism 레이어
- * - 텍스트 가독성: opacity 낮게, 하단 빛 약하게
- * - 세로: 하단 페이드 (40%↓ 강하게, 80%↓ 8%, 95%↓ 투명)
- * - 가로: 중앙 청록빛 띠 유지
+ * 원본 Prism 의도대로 전체 페이지 배경
+ * - 마스크 없음, glow 1, bloom 1
  */
 export default function PrismBackground() {
   return (
@@ -14,25 +12,22 @@ export default function PrismBackground() {
       className="fixed inset-0 z-[1] w-full h-full"
       style={{
         pointerEvents: "none",
-        opacity: 1,
         isolation: "isolate",
-        maskImage: "linear-gradient(to bottom, black 0%, black 65%, rgba(0,0,0,0.75) 85%, transparent 100%)",
-        WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 65%, rgba(0,0,0,0.75) 85%, transparent 100%)",
       }}
       aria-hidden
     >
       <Prism
         animationType="rotate"
-        timeScale={0.4}
+        timeScale={0.5}
         height={3.5}
         baseWidth={5.5}
         scale={3.6}
-        hueShift={0.12}
-        colorFrequency={0.7}
+        hueShift={0}
+        colorFrequency={1}
         noise={0}
-        glow={1.4}
-        bloom={1.25}
-        lowerFadeMin={0.35}
+        glow={1}
+        bloom={1}
+        lowerFadeMin={1}
         suspendWhenOffscreen
         transparent
       />
