@@ -5,6 +5,7 @@ import Header from "./Header";
 import Hero from "./Hero";
 import WhyKaptik from "./WhyKaptik";
 import FAQ from "./FAQ";
+import Testimonials from "./Testimonials";
 import WaitlistModal from "./WaitlistModal";
 import ThankYouModal from "./ThankYouModal";
 
@@ -39,6 +40,7 @@ export default function LandingPage() {
         />
         <WhyKaptik />
         <FAQ onJoinWaitlist={openWaitlist} />
+        <Testimonials />
       </main>
 
       <WaitlistModal
