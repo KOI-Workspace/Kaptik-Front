@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import PrismBackground from "@/components/PrismBackground";
+
+const PrismBackground = dynamic(
+  () => import("@/components/PrismBackground"),
+  { ssr: false }
+);
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
