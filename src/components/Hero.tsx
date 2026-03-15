@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import SplitText from "./SplitText";
 
 interface HeroProps {
   onJoinWaitlist: () => void;
@@ -37,16 +38,25 @@ export default function Hero({
     >
       <div className="mx-auto max-w-[1360px]">
         <div className="flex flex-col items-center text-center">
-          {/* Headline */}
-          <h1
+          {/* Headline - SplitText 글자별 애니메이션 */}
+          <SplitText
+            text="Understand everything your bias says"
+            tag="h1"
             className="max-w-[90%] text-[clamp(36px,6vw,72px)] font-bold leading-[1.02] tracking-tight md:max-w-[70%]"
             style={{
               color: "#111327",
               letterSpacing: "-0.04em",
             }}
-          >
-            Understand everything your bias says
-          </h1>
+            splitType="chars"
+            delay={50}
+            duration={1.25}
+            ease="power3.out"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+          />
 
           {/* Subcopy */}
           <p
