@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:restart": "pkill -f 'next dev' 2>/dev/null; sleep 1; rm -rf .next/dev/lock 2>/dev/null; next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

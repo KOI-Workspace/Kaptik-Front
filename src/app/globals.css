@@ -66,9 +66,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Base */
+/* Base - force light theme for Kaptik landing (design.json: lightAtmospheric) */
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
