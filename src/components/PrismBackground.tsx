@@ -4,10 +4,8 @@ import Prism from "./Prism";
 
 /**
  * 전체 페이지 배경용 Prism 레이어
- * - fixed, 전체 뷰포트 커버
- * - z-index 0 (콘텐츠 아래)
- * - pointer-events: none
- * - opacity로 가독성 확보
+ * - 세로: 하단 빛나는 막대 약하게
+ * - 가로: 움직이는 양옆 막대 진하게
  */
 export default function PrismBackground() {
   return (
@@ -17,11 +15,11 @@ export default function PrismBackground() {
         pointerEvents: "none",
         opacity: 0.75,
         isolation: "isolate",
-        // 세로: 하단 빛나는 막대 많이 약하게 | 가로: 움직이는 양옆 막대 더 진하게
-        maskImage: `linear-gradient(to bottom, black 0%, black 35%, rgba(0,0,0,0.12) 55%, rgba(0,0,0,0) 75%),
-          linear-gradient(to right, black 0%, black 18%, rgba(0,0,0,0.55) 50%, black 82%, black 100%)`,
-        WebkitMaskImage: `linear-gradient(to bottom, black 0%, black 35%, rgba(0,0,0,0.12) 55%, rgba(0,0,0,0) 75%),
-          linear-gradient(to right, black 0%, black 18%, rgba(0,0,0,0.55) 50%, black 82%, black 100%)`,
+        // 세로: 하단 페이드 | 가로: 양옆 막대 강조 (중앙 약간 완화)
+        maskImage: `linear-gradient(to bottom, black 0%, black 45%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0) 95%),
+          linear-gradient(to right, black 0%, black 22%, rgba(0,0,0,0.8) 50%, black 78%, black 100%)`,
+        WebkitMaskImage: `linear-gradient(to bottom, black 0%, black 45%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0) 95%),
+          linear-gradient(to right, black 0%, black 22%, rgba(0,0,0,0.8) 50%, black 78%, black 100%)`,
       }}
       aria-hidden
     >
