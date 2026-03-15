@@ -18,9 +18,9 @@ export default function PrismBackground() {
         opacity: 0.75,
         isolation: "isolate",
         // 세로: 하단부 더 완화 | 가로: 양옆 막대 아주 약간 세게
-        maskImage: `linear-gradient(to bottom, black 0%, black 42%, rgba(0,0,0,0.4) 72%, rgba(0,0,0,0.05) 100%),
+        maskImage: `linear-gradient(to bottom, black 0%, black 40%, rgba(0,0,0,0.25) 65%, rgba(0,0,0,0) 100%),
           linear-gradient(to right, black 0%, rgba(0,0,0,0.92) 25%, rgba(0,0,0,0.86) 50%, rgba(0,0,0,0.92) 75%, black 100%)`,
-        WebkitMaskImage: `linear-gradient(to bottom, black 0%, black 42%, rgba(0,0,0,0.4) 72%, rgba(0,0,0,0.05) 100%),
+        WebkitMaskImage: `linear-gradient(to bottom, black 0%, black 40%, rgba(0,0,0,0.25) 65%, rgba(0,0,0,0) 100%),
           linear-gradient(to right, black 0%, rgba(0,0,0,0.92) 25%, rgba(0,0,0,0.86) 50%, rgba(0,0,0,0.92) 75%, black 100%)`,
       }}
       aria-hidden
