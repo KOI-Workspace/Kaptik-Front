@@ -14,10 +14,10 @@ export default function PrismBackground() {
       className="fixed inset-0 z-[1] w-full h-full"
       style={{
         pointerEvents: "none",
-        opacity: 0.72,
+        opacity: 0.92,
         isolation: "isolate",
-        maskImage: "linear-gradient(to bottom, black 0%, black 40%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.08) 80%, transparent 95%)",
-        WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 40%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.08) 80%, transparent 95%)",
+        maskImage: "linear-gradient(to bottom, black 0%, black 50%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.2) 88%, transparent 100%)",
+        WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 50%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.2) 88%, transparent 100%)",
       }}
       aria-hidden
     >
@@ -30,9 +30,9 @@ export default function PrismBackground() {
         hueShift={0.12}
         colorFrequency={0.7}
         noise={0}
-        glow={0.68}
-        bloom={0.82}
-        lowerFadeMin={0.15}
+        glow={1.0}
+        bloom={1.0}
+        lowerFadeMin={0.25}
         suspendWhenOffscreen
         transparent
       />
