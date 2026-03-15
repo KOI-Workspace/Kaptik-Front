@@ -37,7 +37,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
             >
               <button
                 onClick={() => setOpenId(openId === item.id ? null : item.id)}
-                className="flex w-full items-center justify-between px-6 py-5 text-left transition-colors hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--violet-glow)] focus:ring-opacity-30"
+                className="flex w-full items-center justify-between px-6 py-5 text-left transition-colors hover:bg-white/30 focus:outline-none"
                 aria-expanded={openId === item.id}
                 aria-controls={`faq-answer-${item.id}`}
                 id={`faq-question-${item.id}`}
