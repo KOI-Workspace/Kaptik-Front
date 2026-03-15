@@ -45,7 +45,7 @@ export default function Hero({
               letterSpacing: "-0.04em",
             }}
           >
-            For every Kpop moment
+            Understand everything your bias says
           </h1>
 
           {/* Subcopy */}
@@ -56,7 +56,7 @@ export default function Hero({
             Ultimate Subtitle for Kpop fans
           </p>
 
-          {/* Email input (textInputHero style - underline only) */}
+          {/* Email input - 박스형 텍스트 필드, 시인성 개선 */}
           <form
             onSubmit={handleEmailSubmit}
             className="mt-10 w-full max-w-[420px]"
@@ -67,11 +67,7 @@ export default function Hero({
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               disabled={isSubmitting}
-              className="w-full bg-transparent py-3 text-center text-[clamp(20px,2.5vw,28px)] placeholder:text-[#C7BED0] focus:outline-none"
-              style={{
-                color: "#111327",
-                borderBottom: "1px solid rgba(17,19,39,0.24)",
-              }}
+              className="w-full rounded-2xl border-2 border-[#E9EAF2] bg-white px-6 py-4 text-left text-[clamp(16px,2vw,18px)] text-[#111327] shadow-[0_4px_20px_rgba(17,19,39,0.08)] placeholder:text-[#9AA0B2] transition-all duration-200 focus:border-[#5E4CE6] focus:outline-none focus:ring-2 focus:ring-[#5E4CE6]/25 focus:ring-offset-2 disabled:opacity-60"
             />
             <div className="mt-8 flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-4">
               <button
