@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import Header from "./Header";
 import Hero from "./Hero";
 import WhyKaptik from "./WhyKaptik";
+import AvailablePlatforms from "./AvailablePlatforms";
 import FAQ from "./FAQ";
 import Testimonials from "./Testimonials";
 import WaitlistModal from "./WaitlistModal";
@@ -39,6 +40,7 @@ export default function LandingPage() {
           onEmailSubmit={handleHeroEmailSubmit}
         />
         <WhyKaptik />
+        <AvailablePlatforms />
         <FAQ onJoinWaitlist={openWaitlist} />
         <Testimonials />
       </main>
