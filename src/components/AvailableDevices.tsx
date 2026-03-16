@@ -26,14 +26,9 @@ export default function AvailableDevices() {
         <div className="grid gap-8 md:grid-cols-3">
           {/* PC Browser */}
           <div
-            className="flex flex-col items-center rounded-2xl p-6 text-center"
-            style={{
-              background: "rgba(255,255,255,0.78)",
-              boxShadow: "0 8px 24px rgba(26,31,56,0.06)",
-              border: "1px solid rgba(255,255,255,0.55)",
-            }}
+            className="flex flex-col items-center text-center"
           >
-            <div className="mb-4 w-full overflow-hidden rounded-xl bg-black/5">
+            <div className="mb-4 w-full max-w-[420px] overflow-hidden rounded-3xl md:max-w-[460px]">
               <img
                 src="/available device images/image 5.png"
                 alt="Kaptik on PC browser"
@@ -54,14 +49,9 @@ export default function AvailableDevices() {
 
           {/* iOS */}
           <div
-            className="flex flex-col items-center rounded-2xl p-6 text-center"
-            style={{
-              background: "rgba(255,255,255,0.78)",
-              boxShadow: "0 8px 24px rgba(26,31,56,0.06)",
-              border: "1px solid rgba(255,255,255,0.55)",
-            }}
+            className="flex flex-col items-center text-center"
           >
-            <div className="mb-4 w-full overflow-hidden rounded-xl bg-black/5">
+            <div className="mb-4 w-full max-w-[260px] overflow-hidden rounded-3xl md:max-w-[280px]">
               <img
                 src="/available device images/ios.png"
                 alt="Kaptik on iOS"
@@ -82,14 +72,9 @@ export default function AvailableDevices() {
 
           {/* Android */}
           <div
-            className="flex flex-col items-center rounded-2xl p-6 text-center"
-            style={{
-              background: "rgba(255,255,255,0.78)",
-              boxShadow: "0 8px 24px rgba(26,31,56,0.06)",
-              border: "1px solid rgba(255,255,255,0.55)",
-            }}
+            className="flex flex-col items-center text-center"
           >
-            <div className="mb-4 w-full overflow-hidden rounded-xl bg-black/5">
+            <div className="mb-4 w-full max-w-[260px] overflow-hidden rounded-3xl md:max-w-[280px]">
               <img
                 src="/available device images/android.png"
                 alt="Kaptik on Android"
