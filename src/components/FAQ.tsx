@@ -146,9 +146,14 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
           <button
             type="button"
             onClick={handleOpenQuestionModal}
-            className="rounded-[999px] bg-[#111327] px-7 py-3 text-sm font-medium text-white shadow-[0_10px_26px_rgba(11,15,40,0.28)] transition-all hover:-translate-y-[1px] hover:shadow-[0_14px_32px_rgba(11,15,40,0.35)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2"
+            className="w-full max-w-[260px] rounded-[999px] px-8 py-4 text-base font-medium transition-all hover:opacity-95 hover:shadow-[0_10px_28px_rgba(94,76,230,0.35)] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2"
+            style={{
+              background: "#5E4CE6",
+              color: "#FFFFFF",
+              boxShadow: "0 6px 20px rgba(94,76,230,0.25)",
+            }}
           >
-            질문하기
+            Ask a question
           </button>
         </div>
       </div>
@@ -188,13 +193,13 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
               className="mb-2 text-[22px] font-bold"
               style={{ color: "#111327", letterSpacing: "-0.03em" }}
             >
-              궁금한 점을 보내주세요
+              Ask anything about Kaptik
             </h2>
             <p
               className="mb-6 text-[15px]"
               style={{ color: "#6F7385" }}
             >
-              남겨주신 이메일로 답변을 보내드릴게요.
+              Leave your email and question, and we’ll get back to you.
             </p>
 
             <form onSubmit={handleSubmitQuestion} className="space-y-4">
@@ -204,7 +209,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
                   className="text-sm font-medium"
                   style={{ color: "#23263A" }}
                 >
-                  답변받을 이메일 주소
+                  Email to receive the answer
                 </label>
                 <input
                   id="faq-question-email"
@@ -227,7 +232,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
                   className="text-sm font-medium"
                   style={{ color: "#23263A" }}
                 >
-                  문의 내용
+                  Your question
                 </label>
                 <textarea
                   id="faq-question-content"
@@ -235,7 +240,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
                   rows={5}
                   value={questionContent}
                   onChange={(e) => setQuestionContent(e.target.value)}
-                  placeholder="궁금하신 점을 자유롭게 작성해주세요."
+                  placeholder="Ask us anything you’re curious about."
                   className="w-full resize-none rounded-xl border px-4 py-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--violet-glow)] focus:ring-opacity-40"
                   style={{
                     borderColor: "#E9EAF2",
@@ -249,7 +254,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
                   type="submit"
                   className="flex-1 rounded-[999px] bg-[#5E4CE6] px-6 py-3 text-sm font-medium text-white shadow-[0_10px_28px_rgba(94,76,230,0.35)] transition-all hover:-translate-y-[1px] hover:shadow-[0_14px_32px_rgba(94,76,230,0.45)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2"
                 >
-                  질문 보내기
+                  Send question
                 </button>
                 <button
                   type="button"
@@ -260,7 +265,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
                     color: "#23263A",
                   }}
                 >
-                  취소
+                  Cancel
                 </button>
               </div>
             </form>
@@ -303,21 +308,21 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
               className="mb-2 text-[20px] font-bold"
               style={{ color: "#111327", letterSpacing: "-0.03em" }}
             >
-              문의가 접수되었어요
+              Thanks for your question
             </h2>
             <p
               className="mb-6 text-[14px]"
               style={{ color: "#6F7385" }}
             >
-              남겨주신 이메일로 최대한 빠르게 답변 드릴게요.
+              We’ll reply to your email as soon as we can.
             </p>
 
             <button
               type="button"
               onClick={handleCloseThankYouModal}
-              className="w-full rounded-[999px] bg-[#111327] px-6 py-3 text-sm font-medium text-white shadow-[0_10px_26px_rgba(11,15,40,0.28)] transition-all hover:-translate-y-[1px] hover:shadow-[0_14px_32px_rgba(11,15,40,0.35)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2"
+              className="w-full rounded-[999px] bg-[#5E4CE6] px-8 py-4 text-sm font-medium text-white shadow-[0_10px_28px_rgba(94,76,230,0.35)] transition-all hover:-translate-y-[1px] hover:shadow-[0_14px_32px_rgba(94,76,230,0.45)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2"
             >
-              확인
+              Close
             </button>
           </div>
         </div>
