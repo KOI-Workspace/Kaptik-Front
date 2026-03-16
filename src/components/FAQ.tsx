@@ -85,6 +85,25 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
         return;
       }
 
+      try {
+        if (typeof window !== "undefined") {
+          void fetch("/api/meta/conversion", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              eventName: "Contact",
+              userEmail: trimmedEmail,
+              eventSourceUrl: window.location.href,
+            }),
+          });
+        }
+      } catch (conversionError) {
+        // eslint-disable-next-line no-console
+        console.error("Meta conversion API call failed (ask question):", conversionError);
+      }
+
       setQuestionEmail("");
       setQuestionContent("");
       setIsQuestionModalOpen(false);

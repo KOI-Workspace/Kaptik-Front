@@ -69,11 +69,9 @@ export default function WaitlistModal({
     setIsSubmitting(true);
     try {
       const supabase = getSupabaseClient();
-      const { error: insertError } = await supabase
-        .from("waitlist")
-        .insert({
-          email: trimmed,
-        });
+      const { error: insertError } = await supabase.from("waitlist").insert({
+        email: trimmed,
+      });
 
       if (insertError) {
         // 이미 같은 이메일이 waitlist 에 있는 경우(UNIQUE 제약조건 위반)는
@@ -91,6 +89,24 @@ export default function WaitlistModal({
         console.error(insertError);
         setError("Something went wrong. Please try again.");
         return;
+      }
+
+      try {
+        if (typeof window !== "undefined") {
+          void fetch("/api/meta/conversion", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              eventName: "Lead",
+              userEmail: trimmed,
+              eventSourceUrl: window.location.href,
+            }),
+          });
+        }
+      } catch (conversionError) {
+        console.error("Meta conversion API call failed (waitlist):", conversionError);
       }
 
       onSuccess();
