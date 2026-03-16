@@ -36,7 +36,7 @@ export const testimonials = [
     nationality: "United States",
     idolFan: "BTS ARMY",
     quote:
-      "Finally, a subtitle tool that actually gets the slang right! When I watch their Bubble lives, I used to miss so much because translations were so literal. Kaptik understands 우리 말 and fandom terms. Game changer for ARMYs who don't speak Korean.",
+      "Finally a subtitle tool that actually gets the slang right! Weverse Live wouldn't even translate ARMY right, but now I can understand way better than before!",
   },
   {
     id: "2",
