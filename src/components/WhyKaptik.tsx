@@ -1,15 +1,14 @@
 "use client";
 
-const problems = [
-  "Inaccurate subtitles that miss K-pop slang and fandom terms",
-  "No way to tell who is speaking — just a wall of text",
-  "Often no subtitles at all on lives, Bubble, and other platforms",
+const beforeProblems = [
+  "누가 부르는지 알 수 없음",
+  "문맥 없는 직역",
+  "발음 정보 없음",
 ];
 
-const solutions = [
-  "Accurate speech recognition + K-pop glossary for customized, precise subtitles",
-  "Speaker identification so you always know who said what",
-  "Works everywhere — any device, any platform",
+const afterBenefits = [
+  "Indicates the person speaking",
+  "Highly accurate Real time Subtitles",
 ];
 
 export default function WhyKaptik() {
@@ -27,7 +26,7 @@ export default function WhyKaptik() {
         </h2>
 
         <div className="grid gap-12 lg:grid-cols-2">
-          {/* Problems */}
+          {/* BEFORE */}
           <div
             className="rounded-[24px] p-8 backdrop-blur-[14px]"
             style={{
@@ -36,30 +35,59 @@ export default function WhyKaptik() {
               border: "1px solid rgba(255,255,255,0.55)",
             }}
           >
-            <h3
-              className="mb-6 text-lg font-semibold"
-              style={{ color: "#6E7284" }}
+            <div className="mb-6 flex flex-wrap items-center gap-3">
+              <h3
+                className="text-xl font-bold"
+                style={{ color: "#111327" }}
+              >
+                BEFORE
+              </h3>
+              <span
+                className="rounded-full px-3 py-1 text-sm font-medium"
+                style={{
+                  background: "rgba(110, 114, 132, 0.2)",
+                  color: "#6E7284",
+                }}
+              >
+                일반 자막
+              </span>
+            </div>
+            <div
+              className="mb-6 overflow-hidden rounded-2xl"
+              style={{
+                boxShadow: "0 8px 24px rgba(26,31,56,0.1)",
+              }}
             >
-              The problem
-            </h3>
-            <ul className="space-y-4">
-              {problems.map((text, i) => (
+              <video
+                src="/videos/BTS subtitle Before.mp4"
+                controls
+                playsInline
+                className="h-auto w-full"
+              />
+            </div>
+            <ul className="space-y-3">
+              {beforeProblems.map((text, i) => (
                 <li
                   key={i}
-                  className="flex gap-3 text-[16px] leading-relaxed"
+                  className="flex items-center gap-3 text-[15px] leading-relaxed"
                   style={{ color: "#23263A" }}
                 >
                   <span
-                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
-                    style={{ background: "#5F667C" }}
-                  />
+                    className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
+                    style={{ color: "#E36A8B", background: "rgba(227,106,139,0.12)" }}
+                    aria-hidden
+                  >
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                      <path d="M2 2l8 8M10 2L2 10" />
+                    </svg>
+                  </span>
                   {text}
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Solutions */}
+          {/* AFTER */}
           <div
             className="rounded-[24px] p-8 backdrop-blur-[14px]"
             style={{
@@ -68,21 +96,44 @@ export default function WhyKaptik() {
               border: "1px solid rgba(255,255,255,0.55)",
             }}
           >
-            <h3
-              className="mb-6 text-lg font-semibold"
-              style={{ color: "#6E7284" }}
+            <div className="mb-6 flex flex-wrap items-center gap-3">
+              <h3
+                className="text-xl font-bold"
+                style={{ color: "#111327" }}
+              >
+                AFTER
+              </h3>
+              <span
+                className="rounded-full px-3 py-1 text-sm font-semibold text-white"
+                style={{
+                  background: "#E36A8B",
+                }}
+              >
+                Kaptik
+              </span>
+            </div>
+            <div
+              className="mb-6 overflow-hidden rounded-2xl"
+              style={{
+                boxShadow: "0 8px 24px rgba(26,31,56,0.1)",
+              }}
             >
-              Our solution
-            </h3>
-            <ul className="space-y-4">
-              {solutions.map((text, i) => (
+              <video
+                src="/videos/BTSsubtitleAfter_mp4.mp4"
+                controls
+                playsInline
+                className="h-auto w-full"
+              />
+            </div>
+            <ul className="space-y-3">
+              {afterBenefits.map((text, i) => (
                 <li
                   key={i}
-                  className="flex gap-3 text-[16px] leading-relaxed"
+                  className="flex items-center gap-3 text-[15px] leading-relaxed"
                   style={{ color: "#23263A" }}
                 >
                   <span
-                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
+                    className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full"
                     style={{ background: "#5E4CE6" }}
                   />
                   {text}
