@@ -78,12 +78,4 @@ export const testimonials = [
     quote:
       "Kaptik even translates Korean slang like '칼군무' and '국룰' correctly, so it actually helps me study Korean too.",
   },
-  {
-    id: "7",
-    name: "Dewi Kusuma",
-    nationality: "Indonesia",
-    idolFan: "DIVE (IVE)",
-    quote:
-      "IVE's Bubble messages and lives—Kaptik gets the tone right. When Wonyoung writes in aegyo style, it actually sounds cute in English. Speaker ID means I never confuse Rei and Leeseo. Best tool for DIVEs who want to feel closer to the members.",
-  },
 ] as const;
