@@ -9,6 +9,8 @@ const PLATFORM_LOGOS = [
   { src: "/fandom platform logo/instagram logo 1.png", alt: "Instagram" },
   { src: "/fandom platform logo/youtube logo 1-Photoroom 1.png", alt: "YouTube" },
   { src: "/fandom platform logo/Berriz Logo 1.png", alt: "Berriz" },
+  { src: "/fandom platform logo/toktoq logo 1.png", alt: "TokToq" },
+  { src: "/fandom platform logo/b.stage logo 1.png", alt: "b.stage" },
 ];
 
 export default function AvailablePlatforms() {
