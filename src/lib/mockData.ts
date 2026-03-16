@@ -76,7 +76,7 @@ export const testimonials = [
     nationality: "Thailand",
     idolFan: "MY (aespa)",
     quote:
-      "aespa's content on Weverse and YouTube—Kaptik makes it so easy to follow. The translations feel like a friend explaining, not Google Translate. I can finally understand Ningning's jokes and Winter's random English mix-ins. Thai MYs, seriously try it!",
+      "Kaptik even translates Korean slang like '칼군무' and '국룰' correctly, so it actually helps me study Korean too.",
   },
   {
     id: "7",
