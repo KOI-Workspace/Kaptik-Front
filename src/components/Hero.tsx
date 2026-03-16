@@ -62,7 +62,7 @@ export default function Hero({
             </div>
             <p
               className="mt-4 text-sm"
-              style={{ color: "#EC4899" }}
+              style={{ color: "#5E4CE6" }}
             >
               Sign up now to get an exclusive launch promo code.
             </p>
