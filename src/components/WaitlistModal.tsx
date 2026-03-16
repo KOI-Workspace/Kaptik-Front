@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, FormEvent, useRef, useEffect } from "react";
-import { MOCK_WAITLIST_COUNT } from "@/lib/mockData";
 import { supabase } from "@/lib/supabaseClient";
 
 interface WaitlistModalProps {
@@ -19,6 +18,7 @@ export default function WaitlistModal({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const [waitlistCount, setWaitlistCount] = useState<number | null>(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -26,6 +26,27 @@ export default function WaitlistModal({
       setError("");
       setTimeout(() => inputRef.current?.focus(), 100);
     }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const fetchWaitlistCount = async () => {
+      const { count, error: countError } = await supabase
+        .from("waitlist")
+        .select("*", { count: "exact", head: true });
+
+      if (countError) {
+        console.error(countError);
+        return;
+      }
+
+      if (typeof count === "number") {
+        setWaitlistCount(200 + count);
+      }
+    };
+
+    fetchWaitlistCount();
   }, [isOpen]);
 
   const handleSubmit = async (e: FormEvent) => {
@@ -147,7 +168,7 @@ export default function WaitlistModal({
             style={{ color: "#6F7385" }}
           >
             <span className="underline">
-              {MOCK_WAITLIST_COUNT.toLocaleString()}
+              {(waitlistCount ?? 200).toLocaleString()}
             </span>{" "}
             people have joined the waitlist so far.
           </p>
