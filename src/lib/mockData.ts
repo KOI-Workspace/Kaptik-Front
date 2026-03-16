@@ -44,7 +44,7 @@ export const testimonials = [
     nationality: "Brazil",
     idolFan: "STAY (Stray Kids)",
     quote:
-      "As a Brazilian STAY, I watch so much content on YouTube and Weverse. The speaker identification is incredible—I always know who's talking. No more guessing if it's Han or Lee Know! The translations feel natural, not robotic.",
+      "As a Brazilian STAY, I watch so much content on YouTube and Weverse. The speaker identification is incredible and now I always know who's talking. No more guessing if it's Han or Lee Know!",
   },
   {
     id: "3",
