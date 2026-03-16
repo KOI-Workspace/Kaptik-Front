@@ -93,7 +93,7 @@ export default function WaitlistModal({
         >
           Be the first to know when Kaptik launches.
           <br />
-          We'll email you a launch promo code.
+          Sign up now to get an exclusive launch promo code by email.
         </p>
 
         <form onSubmit={handleSubmit}>
