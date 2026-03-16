@@ -22,7 +22,7 @@ export default function Header({ onJoinWaitlist }: HeaderProps) {
         background: "transparent",
       }}
     >
-      <div className="mx-auto flex h-full max-w-[1360px] items-center justify-between px-8 md:px-12">
+      <div className="relative mx-auto flex h-full max-w-[1360px] items-center justify-between px-8 md:px-12">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2" aria-label="Kaptik Home">
           <span
@@ -37,7 +37,10 @@ export default function Header({ onJoinWaitlist }: HeaderProps) {
         </a>
 
         {/* Desktop Nav - Center */}
-        <nav className="hidden items-center gap-10 md:flex" aria-label="Main navigation">
+        <nav
+          className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-10 md:flex"
+          aria-label="Main navigation"
+        >
           <button
             onClick={() => scrollToSection("features")}
             className="text-[15px] font-medium transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2 rounded-sm"
