@@ -68,7 +68,7 @@ export const testimonials = [
     nationality: "Germany",
     idolFan: "MOA (TOMORROW X TOGETHER)",
     quote:
-      "I watch TXT on Bubble and YouTube every day. What I love most is that Kaptik doesn't over-translate—when they say '사랑해' it stays heartfelt, not stiff. The glossary for idol-specific terms is amazing. Perfect for international MOAs.",
+      "I watch TXT on Bubble and YouTube every day, and Kaptik keeps their '사랑해' sounding heartfelt, not stiff.",
   },
   {
     id: "6",
