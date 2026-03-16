@@ -56,7 +56,7 @@ export const testimonials = [
   },
   {
     id: "4",
-    name: "Maria Santos",
+    name: "Bea Mendoza",
     nationality: "Philippines",
     idolFan: "CARAT (SEVENTEEN)",
     quote:
