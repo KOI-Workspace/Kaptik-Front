@@ -52,6 +52,13 @@ export default function Header({ onJoinWaitlist }: HeaderProps) {
           >
             FAQ
           </button>
+          <button
+            onClick={() => scrollToSection("testimonials")}
+            className="text-[15px] font-medium transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2 rounded-sm"
+            style={{ color: "#23263A", letterSpacing: "-0.01em" }}
+          >
+            Reviews
+          </button>
         </nav>
 
         {/* CTA - Right */}
@@ -122,6 +129,13 @@ export default function Header({ onJoinWaitlist }: HeaderProps) {
               style={{ color: "#23263A" }}
             >
               FAQ
+            </button>
+            <button
+              onClick={() => scrollToSection("testimonials")}
+              className="text-left text-lg font-medium"
+              style={{ color: "#23263A" }}
+            >
+              Reviews
             </button>
             <button
               onClick={() => {
