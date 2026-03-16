@@ -1,9 +1,9 @@
 "use client";
 
 const beforeProblems = [
-  "누가 부르는지 알 수 없음",
-  "문맥 없는 직역",
-  "발음 정보 없음",
+  "Cannot tell who is singing",
+  "Literal translation without context",
+  "No pronunciation information",
 ];
 
 const afterBenefits = [
@@ -49,7 +49,7 @@ export default function WhyKaptik() {
                   color: "#6E7284",
                 }}
               >
-                일반 자막
+                General subtitle
               </span>
             </div>
             <div
