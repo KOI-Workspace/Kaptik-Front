@@ -23,10 +23,10 @@ export default function AvailableDevices() {
           experience.
         </p>
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3 md:items-center">
           {/* PC Browser */}
           <div
-            className="flex flex-col items-center text-center"
+            className="flex flex-col items-center text-center md:mt-6"
           >
             <div className="mb-4 w-full max-w-[420px] overflow-hidden rounded-3xl md:max-w-[460px]">
               <img
@@ -48,10 +48,8 @@ export default function AvailableDevices() {
           </div>
 
           {/* iOS */}
-          <div
-            className="flex flex-col items-center text-center"
-          >
-            <div className="mb-4 w-full max-w-[260px] overflow-hidden rounded-3xl md:max-w-[280px]">
+          <div className="flex flex-col items-center text-center">
+            <div className="mb-4 w-full max-w-[130px] overflow-hidden rounded-3xl md:max-w-[140px]">
               <img
                 src="/available device images/ios.png"
                 alt="Kaptik on iOS"
@@ -71,10 +69,8 @@ export default function AvailableDevices() {
           </div>
 
           {/* Android */}
-          <div
-            className="flex flex-col items-center text-center"
-          >
-            <div className="mb-4 w-full max-w-[260px] overflow-hidden rounded-3xl md:max-w-[280px]">
+          <div className="flex flex-col items-center text-center">
+            <div className="mb-4 w-full max-w-[130px] overflow-hidden rounded-3xl md:max-w-[140px]">
               <img
                 src="/available device images/android.png"
                 alt="Kaptik on Android"
