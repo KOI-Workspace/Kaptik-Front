@@ -12,8 +12,8 @@ export default function Hero({
 }: HeroProps) {
   return (
     <section
-      className="relative px-6 pt-[150px] pb-24 md:px-12 lg:px-16"
-      style={{ paddingTop: "calc(88px + 80px)" }}
+      className="relative px-6 pt-[120px] pb-24 md:px-12 lg:px-16"
+      style={{ paddingTop: "calc(88px + 40px)" }}
     >
       <div className="mx-auto max-w-[1360px]">
         <div className="flex flex-col items-center text-center">
