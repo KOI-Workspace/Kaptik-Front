@@ -32,7 +32,8 @@ export default function AskQuestion() {
 
     setIsSubmitting(true);
     try {
-      const locale = typeof navigator !== "undefined" ? navigator.language : undefined;
+      const locale =
+        typeof navigator !== "undefined" ? navigator.language : undefined;
       const userAgent =
         typeof navigator !== "undefined" ? navigator.userAgent : undefined;
       const referrer =
@@ -43,14 +44,25 @@ export default function AskQuestion() {
       const contextPage =
         typeof window !== "undefined" ? window.location.pathname : undefined;
 
+      // ask_questions.id 가 uuid 이고 기본값이 없을 수 있으므로, 클라이언트에서 직접 생성
+      const generatedId =
+        typeof crypto !== "undefined" && "randomUUID" in crypto
+          ? crypto.randomUUID()
+          : undefined;
+
+      const payload: Record<string, any> = {
+        email: trimmedEmail,
+        name: name || null,
+        question: trimmedQuestion,
+      };
+
+      if (generatedId) {
+        payload.id = generatedId;
+      }
+
       const { error: insertError } = await supabase
         .from("ask_questions")
-        .insert({
-          email: trimmedEmail,
-          name: name || null,
-          // 최소 필드만 먼저 저장해서 타입/스키마 이슈를 피함
-          question: trimmedQuestion,
-        });
+        .insert(payload);
 
       if (insertError) {
         console.error("ask_questions insert error:", insertError);
