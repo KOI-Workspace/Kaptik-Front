@@ -15,22 +15,26 @@ export default function WhyKaptik() {
     <section id="features" className="relative px-6 py-20 md:px-12 lg:px-16">
       <div className="mx-auto max-w-[1360px]">
         <h2
-          className="mb-16 text-center text-[clamp(30px,4vw,42px)] font-bold leading-tight tracking-tight"
-          style={{
-            color: "#111327",
-            letterSpacing: "-0.03em",
-          }}
+          className="mb-4 text-center text-sm font-semibold uppercase tracking-widest"
+          style={{ color: "#6E7284" }}
         >
           Why Kaptik?
         </h2>
-        <p
-          className="mb-10 text-center text-[clamp(24px,3vw,32px)] font-bold leading-tight tracking-tight"
+        <h3
+          className="mb-6 text-center text-[clamp(28px,3.5vw,38px)] font-bold leading-tight tracking-tight"
           style={{
             color: "#111327",
             letterSpacing: "-0.03em",
           }}
         >
-          Overwhelming subtitle quality
+          Features
+        </h3>
+        <p
+          className="mx-auto mb-14 max-w-[560px] text-center text-base leading-relaxed"
+          style={{ color: "#6F7385" }}
+        >
+          K-pop optimized translation model with a cross-device, cross-platform
+          experience that truly makes a difference for global K-pop fans.
         </p>
 
         <div className="grid gap-12 lg:grid-cols-2">

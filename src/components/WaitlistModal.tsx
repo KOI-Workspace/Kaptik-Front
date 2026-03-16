@@ -46,26 +46,25 @@ export default function WaitlistModal({
 
     setIsSubmitting(true);
     try {
-      const country = undefined;
-      const locale = typeof navigator !== "undefined" ? navigator.language : undefined;
-      const userAgent =
-        typeof navigator !== "undefined" ? navigator.userAgent : undefined;
-      const referrer =
-        typeof document !== "undefined" && document.referrer
-          ? document.referrer
-          : undefined;
-      const source = "landing_waitlist_modal";
-
-      const { error: insertError } = await supabase.from("waitlist").insert({
-        email: trimmed,
-        country,
-        locale,
-        user_agent: userAgent,
-        referrer,
-        source,
-      });
+      const { error: insertError } = await supabase
+        .from("waitlist")
+        .insert({
+          email: trimmed,
+        });
 
       if (insertError) {
+        // 이미 같은 이메일이 waitlist 에 있는 경우(UNIQUE 제약조건 위반)는
+        // 에러로 보지 말고 "이미 웨이틀리스트에 있음"으로 처리
+        // Postgres unique_violation: code 23505
+        if (
+          (insertError as any).code === "23505" ||
+          insertError.message?.includes("duplicate key value")
+        ) {
+          onSuccess();
+          onClose();
+          return;
+        }
+
         console.error(insertError);
         setError("Something went wrong. Please try again.");
         return;

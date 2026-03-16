@@ -1,7 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { faqItems } from "@/lib/mockData";
+import { supabase } from "@/lib/supabaseClient";
+
+// crypto.randomUUID 를 지원하지 않는 브라우저에서도 항상 UUID 형태의 id 를 만들기 위한 헬퍼
+function generateUUID() {
+  if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
+    return crypto.randomUUID();
+  }
+
+  // 간단한 폴백 구현 (충분히 유니크하면 됨, 완벽한 UUID 스펙을 따를 필요는 없음)
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
 
 interface FAQProps {
   onJoinWaitlist: () => void;
@@ -13,6 +28,8 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
   const [isThankYouModalOpen, setIsThankYouModalOpen] = useState(false);
   const [questionEmail, setQuestionEmail] = useState("");
   const [questionContent, setQuestionContent] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [isLinkCopied, setIsLinkCopied] = useState(false);
   const shareUrl = "https://kaptik.app";
 
@@ -21,6 +38,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
   };
 
   const handleCloseQuestionModal = () => {
+    if (isSubmitting) return;
     setIsQuestionModalOpen(false);
   };
 
@@ -28,21 +46,56 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
     setIsThankYouModalOpen(false);
   };
 
-  const handleSubmitQuestion = (e: React.FormEvent) => {
+  const handleSubmitQuestion = async (e: FormEvent) => {
     e.preventDefault();
+    setSubmitError("");
 
-    // TODO: 나중에 Supabase로 연동해서 실제로 DB에 저장하도록 변경 예정
-    // eslint-disable-next-line no-console
-    console.log("FAQ Question Submitted", {
-      email: questionEmail,
-      content: questionContent,
-    });
+    const trimmedEmail = questionEmail.trim().toLowerCase();
+    const trimmedContent = questionContent.trim();
 
-    setQuestionEmail("");
-    setQuestionContent("");
-    setIsQuestionModalOpen(false);
-    setIsThankYouModalOpen(true);
-    setIsLinkCopied(false);
+    if (!trimmedEmail || !trimmedContent) {
+      setSubmitError("이메일과 질문 내용을 모두 입력해 주세요.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(trimmedEmail)) {
+      setSubmitError("유효한 이메일 주소를 입력해 주세요.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const payload: Record<string, any> = {
+        id: generateUUID(),
+        email: trimmedEmail,
+        question: trimmedContent,
+      };
+
+      const { error } = await supabase.from("ask_questions").insert(payload);
+
+      if (error) {
+        // eslint-disable-next-line no-console
+        console.error("FAQ ask_questions insert error:", error);
+        setSubmitError(
+          error.message ||
+            "질문을 저장하는 중 문제가 발생했어요. 잠시 후 다시 시도해 주세요."
+        );
+        return;
+      }
+
+      setQuestionEmail("");
+      setQuestionContent("");
+      setIsQuestionModalOpen(false);
+      setIsThankYouModalOpen(true);
+      setIsLinkCopied(false);
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error("FAQ ask_questions unexpected error:", err);
+      setSubmitError("알 수 없는 오류가 발생했어요. 잠시 후 다시 시도해 주세요.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -251,16 +304,22 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
                 />
               </div>
 
-              <div className="mt-2 flex gap-3">
+              {submitError && (
+                <p className="mt-2 text-sm text-red-600">{submitError}</p>
+              )}
+
+              <div className="mt-4 flex gap-3">
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="flex-1 rounded-[999px] bg-[#5E4CE6] px-6 py-3 text-sm font-medium text-white shadow-[0_10px_28px_rgba(94,76,230,0.35)] transition-all hover:-translate-y-[1px] hover:shadow-[0_14px_32px_rgba(94,76,230,0.45)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2"
                 >
-                  Send question
+                  {isSubmitting ? "Sending..." : "Send question"}
                 </button>
                 <button
                   type="button"
                   onClick={handleCloseQuestionModal}
+                  disabled={isSubmitting}
                   className="flex-1 rounded-[999px] border px-6 py-3 text-sm font-medium transition-colors hover:bg-gray-50"
                   style={{
                     borderColor: "#E9EAF2",

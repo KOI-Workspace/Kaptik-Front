@@ -3,6 +3,20 @@
 import { useState, FormEvent } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
+// crypto.randomUUID 를 지원하지 않는 브라우저에서도 항상 UUID 형태의 id 를 만들기 위한 헬퍼
+function generateUUID() {
+  if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
+    return crypto.randomUUID();
+  }
+
+  // 간단한 폴백 구현 (충분히 유니크하면 됨, 완벽한 UUID 스펙을 따를 필요는 없음)
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
 export default function AskQuestion() {
   const [email, setEmail] = useState("");
   const [question, setQuestion] = useState("");
@@ -20,45 +34,25 @@ export default function AskQuestion() {
     const trimmedQuestion = question.trim();
 
     if (!trimmedEmail || !trimmedQuestion) {
-      setError("Email and question are required.");
+      setError("이메일과 질문 내용을 모두 입력해 주세요.");
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(trimmedEmail)) {
-      setError("Please enter a valid email address.");
+      setError("유효한 이메일 주소를 입력해 주세요.");
       return;
     }
 
     setIsSubmitting(true);
     try {
-      const locale =
-        typeof navigator !== "undefined" ? navigator.language : undefined;
-      const userAgent =
-        typeof navigator !== "undefined" ? navigator.userAgent : undefined;
-      const referrer =
-        typeof document !== "undefined" && document.referrer
-          ? document.referrer
-          : undefined;
-      const country = undefined;
-      const contextPage =
-        typeof window !== "undefined" ? window.location.pathname : undefined;
-
-      // ask_questions.id 가 uuid 이고 기본값이 없을 수 있으므로, 클라이언트에서 직접 생성
-      const generatedId =
-        typeof crypto !== "undefined" && "randomUUID" in crypto
-          ? crypto.randomUUID()
-          : undefined;
-
       const payload: Record<string, any> = {
+        // ask_questions.id 가 uuid NOT NULL 이고 기본값이 없을 수 있으므로, 항상 클라이언트에서 생성해서 전달
+        id: generateUUID(),
         email: trimmedEmail,
         name: name || null,
         question: trimmedQuestion,
       };
-
-      if (generatedId) {
-        payload.id = generatedId;
-      }
 
       const { error: insertError } = await supabase
         .from("ask_questions")
@@ -68,7 +62,7 @@ export default function AskQuestion() {
         console.error("ask_questions insert error:", insertError);
         setError(
           insertError.message ||
-            "Something went wrong while saving your question. Please try again."
+            "질문을 저장하는 중 문제가 발생했어요. 잠시 후 다시 시도해 주세요."
         );
         return;
       }
@@ -79,7 +73,7 @@ export default function AskQuestion() {
       setName("");
     } catch (err) {
       console.error(err);
-      setError("Something went wrong. Please try again.");
+      setError("알 수 없는 오류가 발생했어요. 잠시 후 다시 시도해 주세요.");
     } finally {
       setIsSubmitting(false);
     }
