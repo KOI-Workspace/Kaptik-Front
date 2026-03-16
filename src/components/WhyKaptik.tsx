@@ -24,8 +24,11 @@ export default function WhyKaptik() {
           Why Kaptik?
         </h2>
         <p
-          className="mb-8 text-center text-[clamp(16px,2vw,20px)] font-medium leading-relaxed"
-          style={{ color: "#6F7385" }}
+          className="mb-10 text-center text-[clamp(24px,3vw,32px)] font-bold leading-tight tracking-tight"
+          style={{
+            color: "#111327",
+            letterSpacing: "-0.03em",
+          }}
         >
           Overwhelming improvement in subtitle quality
         </p>
