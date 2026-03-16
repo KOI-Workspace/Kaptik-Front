@@ -3,17 +3,20 @@
 import LogoLoop from "./LogoLoop";
 
 const PLATFORM_LOGOS = [
-  { src: "/fandom platform logo/Weverse_logo 1.png", alt: "Weverse" },
-  { src: "/fandom platform logo/bubble logo 1.png", alt: "Bubble" },
-  { src: "/fandom platform logo/fromm logo 1.png", alt: "Fromm" },
-  { src: "/fandom platform logo/instagram logo 1.png", alt: "Instagram" },
-  { src: "/fandom platform logo/youtube logo 1-Photoroom 1.png", alt: "YouTube" },
-  { src: "/fandom platform logo/Berriz Logo 1.png", alt: "Berriz" },
-  { src: "/fandom platform logo/toktoq logo 1.png", alt: "TokToq" },
+  { src: "/fandom platform logos_png/Weverse_logo 1.png", alt: "Weverse" },
+  { src: "/fandom platform logos_png/bubble logo 1.png", alt: "Bubble" },
+  { src: "/fandom platform logos_png/fromm logo 1.png", alt: "Fromm" },
+  { src: "/fandom platform logos_png/instagram logo 1.png", alt: "Instagram" },
+  {
+    src: "/fandom platform logos_png/youtube logo 1-Photoroom 1.png",
+    alt: "YouTube",
+  },
+  { src: "/fandom platform logos_png/Berriz Logo 1.png", alt: "Berriz" },
+  { src: "/fandom platform logos_png/toktoq logo.png", alt: "TokToq" },
   {
     node: (
       <img
-        src="/fandom platform logo/b.stage logo 1.png"
+        src="/fandom platform logos_png/b.stage logo.webp"
         alt="b.stage"
         className="h-6 w-auto object-contain"
         loading="lazy"
