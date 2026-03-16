@@ -1,4 +1,4 @@
-\"use client\";
+"use client";
 import SplitText from "./SplitText";
 
 interface HeroProps {
