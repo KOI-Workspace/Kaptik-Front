@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import Header from "./Header";
 import Hero from "./Hero";
 import WhyKaptik from "./WhyKaptik";
+import AvailableDevices from "./AvailableDevices";
 import AvailablePlatforms from "./AvailablePlatforms";
 import FAQ from "./FAQ";
 import Testimonials from "./Testimonials";
@@ -34,6 +35,7 @@ export default function LandingPage() {
           onHowToUse={scrollToFeatures}
         />
         <WhyKaptik />
+        <AvailableDevices />
         <AvailablePlatforms />
         <FAQ onJoinWaitlist={openWaitlist} />
         <Testimonials />
