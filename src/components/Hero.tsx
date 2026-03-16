@@ -63,7 +63,7 @@ export default function Hero({
             className="mt-6 max-w-[600px] text-[clamp(18px,2.2vw,22px)] leading-relaxed"
             style={{ color: "#6F7385" }}
           >
-            Ultimate Subtitle for Kpop fans
+            Kaptik turns chaotic live subtitles into clear, real-time translation with context, speaker labels, and K-pop-aware accuracy.
           </p>
 
           {/* Email input - 박스형 텍스트 필드, 시인성 개선 */}
