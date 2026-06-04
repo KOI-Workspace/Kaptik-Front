@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import Header from "./Header";
 import Hero from "./Hero";
+import FanProblems from "./FanProblems";
 import WhyKaptik from "./WhyKaptik";
 import AvailableDevices from "./AvailableDevices";
 import AvailablePlatforms from "./AvailablePlatforms";
@@ -32,6 +33,7 @@ export default function LandingPage() {
         <Hero
           onWaitlistSuccess={handleWaitlistSuccess}
         />
+        <FanProblems />
         <WhyKaptik />
         <AvailableDevices />
         <AvailablePlatforms />
