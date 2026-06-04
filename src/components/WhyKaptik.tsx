@@ -1,13 +1,41 @@
 "use client";
 
-const beforeProblems = [
-  "Cannot tell who is speaking",
-  "Literal translation without any context",
-];
-
-const afterBenefits = [
-  "Indicates the person speaking",
-  "Highly accurate Real time Subtitles",
+const solutionFeatures = [
+  {
+    eyebrow: "Live subtitles",
+    title: "Follow every live moment without waiting",
+    description:
+      "Kaptik delivers high-quality subtitles alongside K-pop live videos, so global fans can understand what is happening as it happens.",
+    imageSide: "right",
+  },
+  {
+    eyebrow: "Any video link",
+    title: "Turn any YouTube or TikTok clip into a subtitled video",
+    description:
+      "Paste the link to a video you have always wanted to watch, wait a few minutes, and get polished subtitles ready to follow.",
+    imageSide: "left",
+  },
+  {
+    eyebrow: "Speaker and context",
+    title: "Know who said what and why it matters",
+    description:
+      "Kaptik labels speakers and explains fandom slang, cultural references, and hidden nuance that general subtitles often miss.",
+    imageSide: "right",
+  },
+  {
+    eyebrow: "30+ languages",
+    title: "Share the same moment in 30+ languages",
+    description:
+      "Translate subtitles into more than 30 languages so fans around the world can follow K-pop content in their own language.",
+    imageSide: "left",
+  },
+  {
+    eyebrow: "Any device",
+    title: "Available on any devices",
+    description:
+      "Use Kaptik across desktop browsers, iOS, and Android with the same focused subtitle experience.",
+    imageSide: "right",
+  },
 ];
 
 export default function WhyKaptik() {
@@ -15,141 +43,62 @@ export default function WhyKaptik() {
     <section id="features" className="relative px-6 py-20 md:px-12 lg:px-16">
       <div className="mx-auto max-w-[1360px]">
         <h2
-          className="mb-4 text-center text-sm font-semibold uppercase tracking-widest"
-          style={{ color: "#A3A3A3" }}
-        >
-          Why Kaptik?
-        </h2>
-        <h3
-          className="mb-6 text-center text-[clamp(28px,3.5vw,38px)] font-bold leading-tight tracking-tight"
+          className="mb-14 text-center text-[clamp(30px,4vw,48px)] font-bold leading-tight tracking-tight"
           style={{
             color: "#0A0A0A",
             letterSpacing: "-0.03em",
           }}
         >
-          Features
-        </h3>
-        <p
-          className="mx-auto mb-14 max-w-[560px] text-center text-base leading-relaxed"
-          style={{ color: "#525252" }}
-        >
-          K-pop optimized translation model with a cross-device, cross-platform
-          experience that truly makes a difference for global K-pop fans.
-        </p>
+          How we solve the problem
+        </h2>
 
-        <div className="grid gap-12 lg:grid-cols-2">
-          {/* BEFORE */}
-          <div
-            className="rounded-[16px] border border-[#EAEAEA] bg-white p-8"
-            style={{
-              boxShadow: "var(--shadow-sm)",
-            }}
-          >
-            <div className="mb-6 flex flex-wrap items-center gap-3">
-              <h3
-                className="text-xl font-bold"
-                style={{ color: "#0A0A0A" }}
+        <div className="space-y-16">
+          {solutionFeatures.map((feature) => {
+            const imagePlaceholder = (
+              <div
+                className="flex aspect-[4/3] min-h-[320px] w-full items-center justify-center rounded-[16px] border border-dashed border-[#D4D4D4] bg-[#FAFAFA]"
+                aria-hidden
               >
-                BEFORE
-              </h3>
-              <span
-                className="rounded-full px-3 py-1 text-sm font-medium"
-                style={{
-                  background: "#F5F5F5",
-                  color: "#525252",
-                }}
-              >
-                General subtitle
-              </span>
-            </div>
-            <div
-              className="mb-6 overflow-hidden rounded-2xl border border-[#EAEAEA]"
-              style={{
-                boxShadow: "var(--shadow-sm)",
-              }}
-            >
-              <video
-                src="/videos/BTS subtitle Before.mp4"
-                controls
-                playsInline
-                className="h-auto w-full"
-              />
-            </div>
-            <ul className="space-y-3">
-              {beforeProblems.map((text, i) => (
-                <li
-                  key={i}
-                  className="flex items-center gap-3 text-[15px] leading-relaxed"
-                  style={{ color: "#0A0A0A" }}
-                >
-                  <span
-                    className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
-                    style={{ color: "#DC2626", background: "#FEE2E2" }}
-                    aria-hidden
-                  >
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                      <path d="M2 2l8 8M10 2L2 10" />
-                    </svg>
-                  </span>
-                  {text}
-                </li>
-              ))}
-            </ul>
-          </div>
+                <span className="text-sm text-[#A3A3A3]">이미지 자리</span>
+              </div>
+            );
 
-          {/* AFTER */}
-          <div
-            className="rounded-[16px] border border-[#EAEAEA] bg-white p-8"
-            style={{
-              boxShadow: "var(--shadow-sm)",
-            }}
-          >
-            <div className="mb-6 flex flex-wrap items-center gap-3">
-              <h3
-                className="text-xl font-bold"
-                style={{ color: "#0A0A0A" }}
-              >
-                AFTER
-              </h3>
-              <span
-                className="rounded-full px-3 py-1 text-sm font-semibold"
-                style={{
-                  background: "#EDE9FE",
-                  color: "#5B21B6",
-                }}
-              >
-                Kaptik
-              </span>
-            </div>
-            <div
-              className="mb-6 overflow-hidden rounded-2xl border border-[#EAEAEA]"
-              style={{
-                boxShadow: "var(--shadow-sm)",
-              }}
-            >
-              <video
-                src="/videos/BTSsubtitleAfter_mp4.mp4"
-                controls
-                playsInline
-                className="h-auto w-full"
-              />
-            </div>
-            <ul className="space-y-3">
-              {afterBenefits.map((text, i) => (
-                <li
-                  key={i}
-                  className="flex items-center gap-3 text-[15px] leading-relaxed"
-                  style={{ color: "#0A0A0A" }}
+            const textContent = (
+              <div className="flex flex-col justify-center">
+                <span
+                  className="mb-6 w-fit rounded-[999px] px-5 py-2 text-sm font-semibold"
+                  style={{
+                    background: "#F5F3FF",
+                    color: "#6D28D9",
+                  }}
                 >
-                  <span
-                    className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full"
-                    style={{ background: "#8B5CF6" }}
-                  />
-                  {text}
-                </li>
-              ))}
-            </ul>
-          </div>
+                  {feature.eyebrow}
+                </span>
+                <h3
+                  className="mb-6 text-[clamp(30px,4.2vw,56px)] font-bold leading-[1.05] tracking-tight"
+                  style={{
+                    color: "#0A0A0A",
+                    letterSpacing: "-0.03em",
+                  }}
+                >
+                  {feature.title}
+                </h3>
+                <p className="max-w-[560px] text-lg leading-relaxed text-[#525252]">
+                  {feature.description}
+                </p>
+              </div>
+            );
+
+            return (
+              <article
+                key={feature.title}
+                className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+              >
+                {feature.imageSide === "left" ? imagePlaceholder : textContent}
+                {feature.imageSide === "left" ? textContent : imagePlaceholder}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

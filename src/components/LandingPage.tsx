@@ -5,8 +5,6 @@ import Header from "./Header";
 import Hero from "./Hero";
 import FanProblems from "./FanProblems";
 import WhyKaptik from "./WhyKaptik";
-import AvailableDevices from "./AvailableDevices";
-import AvailablePlatforms from "./AvailablePlatforms";
 import FAQ from "./FAQ";
 import Testimonials from "./Testimonials";
 import ThankYouModal from "./ThankYouModal";
@@ -35,8 +33,6 @@ export default function LandingPage() {
         />
         <FanProblems />
         <WhyKaptik />
-        <AvailableDevices />
-        <AvailablePlatforms />
         <FAQ />
         <Testimonials />
       </main>
