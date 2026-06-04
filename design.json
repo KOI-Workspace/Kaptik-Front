@@ -1,0 +1,500 @@
+{
+  "designSystem": {
+    "meta": {
+      "productStyle": "Minimal AI landing page",
+      "visualTone": "calm, futuristic, premium, soft-atmospheric",
+      "confidence": "high for layout/patterns, medium for exact color tokens",
+      "primaryThemes": ["lightAtmospheric", "darkHero"]
+    },
+    "foundations": {
+      "colorPalette": {
+        "neutrals": {
+          "ink900": "#05060A",
+          "ink850": "#181C32",
+          "ink800": "#20294C",
+          "textPrimaryLightBg": "#111327",
+          "textSecondaryLightBg": "#6F7385",
+          "textMutedLightBg": "#9AA0B2",
+          "lineSubtle": "#E9EAF2",
+          "surfaceWhite": "#FFFFFF",
+          "surfaceSoft": "#F7F8FC",
+          "surfaceMist": "#E1E4F9"
+        },
+        "atmosphericLights": {
+          "lavender": "#D9BAE7",
+          "softLilac": "#E9D7F5",
+          "powderBlue": "#BBDDF0",
+          "iceBlue": "#C7EBFB",
+          "mistBlue": "#A5B4CD",
+          "fogBlue": "#BAC3DA"
+        },
+        "darkTheme": {
+          "heroBg": "#04050A",
+          "heroPanel": "#0B0D16",
+          "heroBorder": "rgba(255,255,255,0.10)",
+          "heroTextPrimary": "#F3F4F7",
+          "heroTextSecondary": "rgba(255,255,255,0.68)"
+        },
+        "accentGlow": {
+          "cyanGlow": "#7FE8F3",
+          "pinkGlow": "#E36A8B",
+          "violetGlow": "#5E4CE6",
+          "electricBlue": "#6CCBFF"
+        },
+        "previewCardAccent": {
+          "blue": "#7FB2FF",
+          "blueStrong": "#5E9CFF",
+          "greenSoft": "#CFE9C8",
+          "peach": "#F6C9B1",
+          "orange": "#F28B52",
+          "cream": "#F3EEE6"
+        }
+      },
+      "gradients": {
+        "lightHeroBackground": {
+          "type": "linear",
+          "angle": "90deg",
+          "stops": [
+            { "color": "#F4EAF4", "position": "0%" },
+            { "color": "#E9DDF4", "position": "28%" },
+            { "color": "#DDE4F7", "position": "55%" },
+            { "color": "#CFEAFA", "position": "78%" },
+            { "color": "#CAEFFF", "position": "100%" }
+          ],
+          "usage": "full-page hero and section backgrounds in light theme"
+        },
+        "lightAmbientBloom": {
+          "type": "radial",
+          "center": "35% 45%",
+          "stops": [
+            { "color": "rgba(232,170,214,0.42)", "position": "0%" },
+            { "color": "rgba(232,170,214,0.16)", "position": "35%" },
+            { "color": "rgba(232,170,214,0.00)", "position": "75%" }
+          ],
+          "usage": "soft pink spotlight behind left-center hero content"
+        },
+        "darkHeroScreenGlow": {
+          "type": "linear",
+          "angle": "180deg",
+          "stops": [
+            { "color": "#E37B8D", "position": "0%" },
+            { "color": "#7CEBF2", "position": "52%" },
+            { "color": "#6D61F0", "position": "100%" }
+          ],
+          "usage": "glowing laptop screen / prism object"
+        },
+        "buttonOutlineDark": {
+          "type": "solidWithBorder",
+          "fill": "transparent",
+          "border": "rgba(255,255,255,0.18)"
+        }
+      },
+      "typography": {
+        "fontStyle": "Neo-grotesk / modern sans",
+        "weights": {
+          "regular": 400,
+          "medium": 500,
+          "semibold": 600,
+          "bold": 700
+        },
+        "scale": {
+          "nav": {
+            "size": "15-17px",
+            "weight": 500,
+            "letterSpacing": "-0.01em"
+          },
+          "eyebrow": {
+            "size": "18-22px",
+            "weight": 700,
+            "letterSpacing": "0.04em",
+            "transform": "uppercase"
+          },
+          "heroTitleXL": {
+            "size": "72-92px",
+            "weight": 700,
+            "lineHeight": "0.98-1.05",
+            "letterSpacing": "-0.04em"
+          },
+          "heroTitleL": {
+            "size": "58-72px",
+            "weight": 700,
+            "lineHeight": "1.0-1.08",
+            "letterSpacing": "-0.035em"
+          },
+          "sectionTitle": {
+            "size": "30-42px",
+            "weight": 700,
+            "lineHeight": "1.05-1.15",
+            "letterSpacing": "-0.03em"
+          },
+          "body": {
+            "size": "16-20px",
+            "weight": 400,
+            "lineHeight": "1.45-1.6"
+          },
+          "caption": {
+            "size": "13-15px",
+            "weight": 500,
+            "lineHeight": "1.35"
+          }
+        }
+      },
+      "radii": {
+        "pill": "999px",
+        "card": "20-24px",
+        "softPanel": "28-32px",
+        "micro": "10-14px"
+      },
+      "shadows": {
+        "lightCardShadow": "0 12px 30px rgba(26, 31, 56, 0.08)",
+        "floatingPreviewShadow": "0 18px 48px rgba(17, 23, 39, 0.14)",
+        "darkGlowShadow": "0 0 40px rgba(94, 76, 230, 0.28), 0 0 80px rgba(127, 232, 243, 0.12)",
+        "buttonSoftShadow": "0 6px 20px rgba(17, 19, 39, 0.06)"
+      }
+    },
+    "layoutSystem": {
+      "pageStructure": {
+        "maxContentWidth": "1280-1440px",
+        "outerPadding": "32-48px",
+        "heroTopOffset": "120-150px below top nav",
+        "sectionSpacing": "88-140px",
+        "alignment": "strong centered hero, horizontally balanced content blocks"
+      },
+      "navigation": {
+        "height": "80-96px",
+        "logoZone": "left",
+        "centerNav": "product/how-it-works/features/mission/company",
+        "actionZone": "right",
+        "navContainer": "transparent over page background",
+        "itemSpacing": "36-44px"
+      }
+    },
+    "componentStyles": {
+      "pageBackgrounds": {
+        "lightAtmospheric": {
+          "surfaceColor": "linear-gradient(90deg, #F4EAF4 0%, #E9DDF4 28%, #DDE4F7 55%, #CFEAFA 78%, #CAEFFF 100%)",
+          "ambientOverlay": "radial-gradient(circle at 35% 45%, rgba(232,170,214,0.42) 0%, rgba(232,170,214,0.16) 35%, rgba(232,170,214,0) 75%)",
+          "notes": [
+            "Use the linear gradient as the full background base",
+            "Add a blurred pink bloom behind primary content on the left-center",
+            "Do not use hard-edged gradient blocks"
+          ]
+        },
+        "darkHero": {
+          "surfaceColor": "#04050A",
+          "secondarySurface": "#0B0D16",
+          "ambientGlow": "radial-gradient(circle at 50% 70%, rgba(94,76,230,0.24) 0%, rgba(94,76,230,0.00) 65%)",
+          "notes": [
+            "Dark sections rely on contrast and central glow objects",
+            "No textured background; depth comes from lighting and hero illustration"
+          ]
+        }
+      },
+      "navigationBar": {
+        "containerStyle": "transparent",
+        "logo": {
+          "iconColorLight": "#000000",
+          "iconColorDark": "#FFFFFF",
+          "wordmarkColorLight": "#111327",
+          "wordmarkColorDark": "#FFFFFF"
+        },
+        "navLinks": {
+          "defaultLight": "#23263A",
+          "defaultDark": "rgba(255,255,255,0.88)",
+          "inactiveOpacity": 0.92,
+          "activeWeight": 600
+        },
+        "utilityButtons": {
+          "shape": "pill",
+          "padding": "14px 28px",
+          "loginLight": {
+            "surfaceColor": "#FFFFFF",
+            "textColor": "#111327",
+            "shadow": "0 6px 20px rgba(17,19,39,0.06)",
+            "border": "none"
+          },
+          "enterpriseLight": {
+            "surfaceColor": "rgba(255,255,255,0.10)",
+            "textColor": "#111327",
+            "border": "1px solid rgba(17,19,39,0.14)"
+          },
+          "loginDark": {
+            "surfaceColor": "#FFFFFF",
+            "textColor": "#111327"
+          },
+          "enterpriseDark": {
+            "surfaceColor": "transparent",
+            "textColor": "#FFFFFF",
+            "border": "1px solid rgba(255,255,255,0.18)"
+          }
+        }
+      },
+      "heroHeadlines": {
+        "lightHeadline": {
+          "color": "#111327",
+          "weight": 700,
+          "letterSpacing": "-0.04em"
+        },
+        "darkHeadline": {
+          "color": "#F3F4F7",
+          "weight": 700,
+          "letterSpacing": "-0.04em"
+        },
+        "secondaryLine": {
+          "colorLight": "#6F7385",
+          "colorDark": "rgba(255,255,255,0.68)"
+        }
+      },
+      "eyebrowLabels": {
+        "light": {
+          "textColor": "#6E7284",
+          "weight": 600,
+          "transform": "none"
+        },
+        "dark": {
+          "textColor": "rgba(255,255,255,0.82)",
+          "weight": 700,
+          "transform": "uppercase",
+          "letterSpacing": "0.04em"
+        }
+      },
+      "primaryButtons": {
+        "lightTheme": {
+          "surfaceColor": "#FFFFFF",
+          "textColor": "#111327",
+          "borderRadius": "999px",
+          "shadow": "0 6px 20px rgba(17,19,39,0.06)",
+          "padding": "18px 34px"
+        },
+        "darkTheme": {
+          "surfaceColor": "transparent",
+          "textColor": "#FFFFFF",
+          "border": "1px solid rgba(255,255,255,0.18)",
+          "borderRadius": "999px",
+          "padding": "18px 34px"
+        },
+        "interactionStates": {
+          "hover": {
+            "light": {
+              "surfaceColor": "#FAFBFF",
+              "shadow": "0 10px 28px rgba(17,19,39,0.10)"
+            },
+            "dark": {
+              "border": "1px solid rgba(255,255,255,0.28)",
+              "backgroundColor": "rgba(255,255,255,0.04)"
+            }
+          },
+          "active": {
+            "transform": "scale(0.99)"
+          },
+          "disabled": {
+            "opacity": 0.45
+          }
+        }
+      },
+      "textInputHero": {
+        "surfaceColor": "transparent",
+        "textColor": "#C1B8C8",
+        "placeholderColor": "#C7BED0",
+        "borderBottom": "1px solid rgba(255,255,255,0.64)",
+        "fontSize": "28-34px",
+        "notes": [
+          "Single-line oversized input embedded directly in hero",
+          "No boxed field; only underline treatment"
+        ]
+      },
+      "pillChips": {
+        "surfaceColor": "rgba(255,255,255,0.60)",
+        "textColor": "#6E7284",
+        "border": "1px solid rgba(255,255,255,0.42)",
+        "radius": "999px",
+        "padding": "14px 26px",
+        "gap": "12-16px",
+        "shadow": "none",
+        "notes": [
+          "Chips feel very soft and airy",
+          "They sit directly over the background without heavy elevation"
+        ]
+      },
+      "featureListPanels": {
+        "panelContainer": {
+          "surfaceColor": "rgba(255,255,255,0.78)",
+          "backdropBlur": "12-18px",
+          "borderRadius": "24px",
+          "shadow": "0 12px 30px rgba(26,31,56,0.08)",
+          "border": "1px solid rgba(255,255,255,0.55)"
+        },
+        "listItems": {
+          "default": {
+            "textColor": "#23263A",
+            "iconColor": "#5F667C"
+          },
+          "activeHighlight": {
+            "surfaceColor": "#FFFFFF",
+            "shadow": "0 8px 22px rgba(17,23,39,0.08)"
+          }
+        }
+      },
+      "deviceFrames": {
+        "desktopFrame": {
+          "strokeColor": "#111111",
+          "strokeWidth": "6-8px",
+          "radius": "10-14px",
+          "surfaceColor": "#FFFFFF"
+        },
+        "phoneFrame": {
+          "strokeColor": "#111111",
+          "strokeWidth": "8-10px",
+          "radius": "44-52px",
+          "surfaceColor": "#FFFFFF"
+        }
+      },
+      "floatingPreviewCards": {
+        "surfaceColor": "#FFFFFF",
+        "borderRadius": "22-26px",
+        "shadow": "0 18px 48px rgba(17,23,39,0.14)",
+        "headerTextColor": "#111327",
+        "bodyTextColor": "#6F7385",
+        "accentTagBlue": "#7FB2FF",
+        "accentTagPeach": "#F6C9B1",
+        "accentTagGreen": "#CFE9C8",
+        "closeIconColor": "#A6ABBC"
+      },
+      "darkHeroIllustration": {
+        "platformBase": {
+          "surfaceColor": "#131624",
+          "shadow": "0 0 40px rgba(94,76,230,0.28), 0 0 80px rgba(127,232,243,0.12)"
+        },
+        "screenPlane": {
+          "surfaceColor": "linear-gradient(180deg, #E37B8D 0%, #7CEBF2 52%, #6D61F0 100%)",
+          "stroke": "rgba(255,255,255,0.10)"
+        }
+      },
+      "mediaControls": {
+        "track": {
+          "lineColorLight": "rgba(17,19,39,0.12)",
+          "lineColorDark": "rgba(255,255,255,0.14)"
+        },
+        "knob": {
+          "fillLight": "#111327",
+          "fillDark": "#FFFFFF"
+        },
+        "playPause": {
+          "iconColorLight": "#111327",
+          "iconColorDark": "#FFFFFF"
+        }
+      },
+      "waterLandscapeScene": {
+        "surfaceBase": "#EEF1F8",
+        "waterTint": "#DCE3F3",
+        "ridgeTintNear": "#CBD5E6",
+        "ridgeTintFar": "#E8EDF7",
+        "verticalMarkers": "#AEB8CB",
+        "specularHighlights": "rgba(255,255,255,0.52)",
+        "notes": [
+          "Landscape is extremely low-contrast",
+          "Forms are created through tone shifts, not strong borders"
+        ]
+      }
+    },
+    "stateArchitecture": {
+      "buttons": {
+        "default": "pills with high softness and minimal aggressive contrast",
+        "hover": "slightly stronger shadow or border opacity",
+        "active": "subtle scale down",
+        "focus": {
+          "ring": "0 0 0 3px rgba(94,156,255,0.22)"
+        },
+        "disabled": {
+          "opacity": 0.45,
+          "cursor": "not-allowed"
+        }
+      },
+      "navLinks": {
+        "default": "medium weight",
+        "hover": "increase opacity / darken slightly",
+        "active": "weight 600 and slightly darker than siblings"
+      },
+      "chips": {
+        "default": "soft translucent white",
+        "hover": "increase opacity and border visibility",
+        "selected": {
+          "surfaceColor": "#FFFFFF",
+          "textColor": "#23263A",
+          "shadow": "0 6px 18px rgba(17,23,39,0.08)"
+        }
+      },
+      "featureCards": {
+        "default": "matte translucent",
+        "hover": "slightly stronger elevation",
+        "active": "bright white emphasis panel"
+      }
+    },
+    "hierarchicalRules": {
+      "backgroundVsContent": [
+        "Page-level gradients belong only on the main section background, never on cards or icons",
+        "Cards and pills stay near-white or translucent white to preserve readability over gradients",
+        "Dark hero uses solid black/navy field with glow objects, not multicolor full-page gradients"
+      ],
+      "typographyRules": [
+        "Hero headlines use near-black on light backgrounds and near-white on dark backgrounds",
+        "Support text is always muted gray-blue, never pure black",
+        "Eyebrows are semibold/bold and tighter than body copy"
+      ],
+      "buttonRules": [
+        "Primary CTAs on light backgrounds use filled white pills",
+        "Utility or enterprise actions use outlined pills",
+        "Dark sections preserve white text with transparent fills and white borders"
+      ],
+      "illustrationRules": [
+        "Ambient visuals are low-contrast and soft-edged",
+        "Tech objects use selective saturated accents only inside focal illustrations",
+        "Do not spread accent colors across all UI controls"
+      ]
+    },
+    "responsiveBehavior": {
+      "desktop": {
+        "heroHeadlineWidth": "50-70% of viewport",
+        "featureListAndDevice": "two-column composition"
+      },
+      "tablet": {
+        "navSpacing": "reduce by 20-25%",
+        "headline": "decrease to 48-60px"
+      },
+      "mobile": {
+        "stacking": "single column",
+        "heroHeadline": "36-44px",
+        "chips": "wrap into multiple rows",
+        "nav": "collapse to menu/drawer"
+      }
+    },
+    "accessibility": {
+      "contrastGuidance": [
+        "Primary headline on light background appears to exceed WCAG AA",
+        "Muted gray secondary text over pale gradients may fall near AA threshold at smaller sizes",
+        "Outlined buttons on very light backgrounds need minimum 3:1 visible boundary contrast"
+      ],
+      "recommendations": [
+        "Use #5F667C or darker for secondary text smaller than 18px",
+        "Increase border opacity on translucent chips for keyboard/focus clarity",
+        "Do not place light gray text directly over bright bloom regions without a subtle shadow or darker token"
+      ]
+    },
+    "implementationGuardrails": {
+      "avoid": [
+        "Applying the page gradient to buttons, cards, or iconography",
+        "Using pure black body copy on light theme sections",
+        "Adding heavy drop shadows to every object",
+        "Turning the soft atmospheric landscape into sharply outlined shapes",
+        "Making all buttons filled; outline treatment is essential to the system"
+      ],
+      "ensure": [
+        "Consistent pill radius across chips and buttons",
+        "Large negative letter spacing on hero headlines",
+        "Soft translucency for supporting panels in light sections",
+        "Sparse use of saturated accent colors only in hero visuals and preview content",
+        "Very clean, low-noise spacing with lots of empty space"
+      ]
+    }
+  }
+}

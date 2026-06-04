@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* ===== Kaptik Design Tokens (from design.json) ===== */
+:root {
+  /* Neutrals */
+  --ink-900: #05060A;
+  --ink-850: #181C32;
+  --ink-800: #20294C;
+  --text-primary-light: #111327;
+  --text-secondary-light: #6F7385;
+  --text-muted-light: #9AA0B2;
+  --line-subtle: #E9EAF2;
+  --surface-white: #FFFFFF;
+  --surface-soft: #F7F8FC;
+  --surface-mist: #E1E4F9;
+
+  /* Atmospheric Lights */
+  --lavender: #D9BAE7;
+  --soft-lilac: #E9D7F5;
+  --powder-blue: #BBDDF0;
+  --ice-blue: #C7EBFB;
+  --mist-blue: #A5B4CD;
+  --fog-blue: #BAC3DA;
+
+  /* Dark Theme */
+  --hero-bg: #04050A;
+  --hero-panel: #0B0D16;
+  --hero-border: rgba(255, 255, 255, 0.10);
+  --hero-text-primary: #F3F4F7;
+  --hero-text-secondary: rgba(255, 255, 255, 0.68);
+
+  /* Accent Glow */
+  --cyan-glow: #7FE8F3;
+  --pink-glow: #E36A8B;
+  --violet-glow: #5E4CE6;
+  --electric-blue: #6CCBFF;
+
+  /* Gradients */
+  --gradient-light-hero: linear-gradient(90deg, #F4EAF4 0%, #E9DDF4 28%, #DDE4F7 55%, #CFEAFA 78%, #CAEFFF 100%);
+  --gradient-light-ambient: radial-gradient(circle at 35% 45%, rgba(232, 170, 214, 0.42) 0%, rgba(232, 170, 214, 0.16) 35%, rgba(232, 170, 214, 0) 75%);
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans);
+
+  /* Radii */
+  --radius-pill: 999px;
+  --radius-card: 24px;
+  --radius-soft-panel: 28px;
+  --radius-micro: 12px;
+
+  /* Shadows */
+  --shadow-light-card: 0 12px 30px rgba(26, 31, 56, 0.08);
+  --shadow-floating-preview: 0 18px 48px rgba(17, 23, 39, 0.14);
+  --shadow-button-soft: 0 6px 20px rgba(17, 19, 39, 0.06);
+  --shadow-button-hover: 0 10px 28px rgba(17, 19, 39, 0.10);
+  --shadow-panel: 0 8px 22px rgba(17, 23, 39, 0.08);
+
+  /* Focus Ring */
+  --focus-ring: 0 0 0 3px rgba(94, 156, 255, 0.22);
+}
+
+@theme inline {
+  --color-background: var(--surface-soft);
+  --color-foreground: var(--text-primary-light);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Base - force light theme for Kaptik landing (design.json: lightAtmospheric) */
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  background: var(--gradient-light-hero);
+  color: var(--text-primary-light);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+/* Ensure background gradient covers full page with ambient bloom */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--gradient-light-ambient);
+  pointer-events: none;
+  z-index: 0;
+}
