@@ -20,7 +20,8 @@ function getInitials(name: string): string {
 
 /** 이름에서 아바타용 색상 해시 */
 function getAvatarColor(name: string): string {
-  const colors = ["#7FB2FF", "#5E9CFF", "#E36A8B", "#5E4CE6", "#F28B52", "#CFE9C8", "#F6C9B1"];
+  // Lavender Pulse: 아바타 색은 보라·핑크·회색 3종으로 제한
+  const colors = ["#8B5CF6", "#EC4899", "#737373"];
   let hash = 0;
   for (let i = 0; i < name.length; i++) hash += name.charCodeAt(i);
   return colors[Math.abs(hash) % colors.length];
@@ -42,14 +43,14 @@ export default function Testimonials() {
       <div className="mx-auto max-w-[1280px]">
         <h2
           className="mb-4 text-center text-sm font-semibold uppercase tracking-widest"
-          style={{ color: "#6E7284" }}
+          style={{ color: "#A3A3A3" }}
         >
           Reviews
         </h2>
         <h3
           className="mb-6 text-center text-[clamp(28px,3.5vw,38px)] font-bold leading-tight tracking-tight"
           style={{
-            color: "#111327",
+            color: "#0A0A0A",
             letterSpacing: "-0.03em",
           }}
         >
@@ -57,7 +58,7 @@ export default function Testimonials() {
         </h3>
         <p
           className="mx-auto mb-14 max-w-[560px] text-center text-base leading-relaxed"
-          style={{ color: "#6F7385" }}
+          style={{ color: "#525252" }}
         >
           Real K-pop fans from around the world share how Kaptik helps them enjoy Bubble, Fromm, Weverse, and more.
         </p>
@@ -68,12 +69,12 @@ export default function Testimonials() {
             onClick={goPrev}
             type="button"
             aria-label="Previous testimonial"
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full transition-all hover:opacity-90 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#5E4CE6]/40 focus:ring-offset-2"
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full transition-all hover:bg-[#FAFAFA] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]/40 focus:ring-offset-2"
             style={{
-              background: "rgba(255,255,255,0.90)",
-              boxShadow: "0 6px 20px rgba(26,31,56,0.08)",
-              border: "1px solid rgba(255,255,255,0.7)",
-              color: "#111327",
+              background: "#FFFFFF",
+              boxShadow: "var(--shadow-sm)",
+              border: "1px solid #EAEAEA",
+              color: "#0A0A0A",
             }}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -88,7 +89,7 @@ export default function Testimonials() {
               return (
                 <div
                   key={`${currentIndex}-${slotIndex}`}
-                  className={`min-w-0 flex-1 flex-col rounded-[22px] px-5 py-5 transition-all duration-300 md:min-w-[280px] md:max-w-[360px] md:px-6 md:py-6 ${
+                  className={`min-w-0 flex-1 flex-col rounded-[16px] px-5 py-5 transition-all duration-300 md:min-w-[280px] md:max-w-[360px] md:px-6 md:py-6 ${
                     slotIndex === 0
                       ? "flex"
                       : slotIndex === 1
@@ -96,10 +97,9 @@ export default function Testimonials() {
                         : "hidden lg:flex"
                   }`}
                   style={{
-                    background: "rgba(255,255,255,0.78)",
-                    backdropFilter: "blur(14px)",
-                    boxShadow: "0 12px 30px rgba(26,31,56,0.08)",
-                    border: "1px solid rgba(255,255,255,0.55)",
+                    background: "#FFFFFF",
+                    boxShadow: "var(--shadow-sm)",
+                    border: "1px solid #EAEAEA",
                   }}
                 >
                   {/* 아바타 (이니셜) */}
@@ -112,19 +112,19 @@ export default function Testimonials() {
 
                   <blockquote
                     className="mb-5 flex-1 text-[15px] leading-relaxed md:text-base"
-                    style={{ color: "#6F7385" }}
+                    style={{ color: "#525252" }}
                   >
                     &ldquo;{t.quote}&rdquo;
                   </blockquote>
 
-                  <div className="border-t pt-4" style={{ borderColor: "rgba(17,19,39,0.08)" }}>
+                  <div className="border-t pt-4" style={{ borderColor: "#EAEAEA" }}>
                     <p
                       className="text-base font-semibold"
-                      style={{ color: "#111327" }}
+                      style={{ color: "#0A0A0A" }}
                     >
                       {t.name}
                     </p>
-                    <p className="text-[13px]" style={{ color: "#9AA0B2" }}>
+                    <p className="text-[13px]" style={{ color: "#A3A3A3" }}>
                       {t.nationality} · {t.idolFan}
                     </p>
                   </div>
@@ -137,12 +137,12 @@ export default function Testimonials() {
             onClick={goNext}
             type="button"
             aria-label="Next testimonial"
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full transition-all hover:opacity-90 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#5E4CE6]/40 focus:ring-offset-2"
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full transition-all hover:bg-[#FAFAFA] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]/40 focus:ring-offset-2"
             style={{
-              background: "rgba(255,255,255,0.90)",
-              boxShadow: "0 6px 20px rgba(26,31,56,0.08)",
-              border: "1px solid rgba(255,255,255,0.7)",
-              color: "#111327",
+              background: "#FFFFFF",
+              boxShadow: "var(--shadow-sm)",
+              border: "1px solid #EAEAEA",
+              color: "#0A0A0A",
             }}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -162,7 +162,7 @@ export default function Testimonials() {
               className="h-2 rounded-full transition-all focus:outline-none"
               style={{
                 width: i === currentIndex ? 24 : 8,
-                background: i === currentIndex ? "#5E4CE6" : "rgba(17,19,39,0.2)",
+                background: i === currentIndex ? "#8B5CF6" : "#D4D4D4",
               }}
             />
           ))}

@@ -41,7 +41,7 @@ export default function ThankYouModal({ isOpen, onClose }: ThankYouModalProps) {
       {/* Backdrop */}
       <button
         onClick={onClose}
-        className="absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity"
+        className="absolute inset-0 bg-black/55 backdrop-blur-sm transition-opacity"
         aria-label="Close modal"
       />
 
@@ -50,25 +50,25 @@ export default function ThankYouModal({ isOpen, onClose }: ThankYouModalProps) {
         className="relative w-full max-w-[440px] rounded-[24px] p-8"
         style={{
           background: "#FFFFFF",
-          boxShadow: "0 18px 48px rgba(17,23,39,0.14)",
+          boxShadow: "var(--shadow-modal)",
         }}
       >
         <h2
           id="thankyou-modal-title"
           className="mb-2 text-2xl font-bold"
-          style={{ color: "#111327", letterSpacing: "-0.03em" }}
+          style={{ color: "#0A0A0A", letterSpacing: "-0.03em" }}
         >
           Thank you!
         </h2>
         <p
           className="mb-6 text-[15px]"
-          style={{ color: "#6F7385" }}
+          style={{ color: "#525252" }}
         >
           You&apos;re on the list. We&apos;ll be in touch soon.
         </p>
         <p
           className="mb-4 text-[15px] font-medium"
-          style={{ color: "#111327" }}
+          style={{ color: "#0A0A0A" }}
         >
           Would you like to share with friends?
         </p>
@@ -77,17 +77,16 @@ export default function ThankYouModal({ isOpen, onClose }: ThankYouModalProps) {
             type="text"
             readOnly
             value={MOCK_SITE_LINK}
-            className="flex-1 rounded-xl border px-4 py-3 text-sm text-gray-600 bg-gray-50"
+            className="flex-1 rounded-lg border bg-[#FAFAFA] px-4 py-3 text-sm text-[#525252]"
             style={{
-              borderColor: "#E9EAF2",
+              borderColor: "#EAEAEA",
             }}
           />
           <button
             onClick={handleCopy}
-            className="shrink-0 rounded-[999px] px-6 py-3 text-sm font-medium transition-all active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2"
+            className="shrink-0 rounded-[999px] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2"
             style={{
-              background: "#111327",
-              color: "#FFFFFF",
+              background: "#0A0A0A",
             }}
           >
             {copied ? "Copied!" : "Copy"}
@@ -96,10 +95,10 @@ export default function ThankYouModal({ isOpen, onClose }: ThankYouModalProps) {
 
         <button
           onClick={onClose}
-          className="mt-6 w-full rounded-[999px] border px-8 py-3 text-base font-medium transition-all hover:bg-black/[0.04] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2"
+          className="mt-6 w-full rounded-[999px] border px-8 py-3 text-base font-medium transition-colors hover:bg-[#FAFAFA] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2"
           style={{
-            borderColor: "rgba(17,19,39,0.14)",
-            color: "#111327",
+            borderColor: "#EAEAEA",
+            color: "#0A0A0A",
           }}
         >
           Close

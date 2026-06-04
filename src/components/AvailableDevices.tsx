@@ -7,14 +7,14 @@ export default function AvailableDevices() {
         <h2
           className="mb-6 text-center text-[clamp(24px,3vw,32px)] font-bold leading-tight tracking-tight"
           style={{
-            color: "#111327",
+            color: "#0A0A0A",
             letterSpacing: "-0.03em",
           }}
         >
           Available on any devices
         </h2>
         <p
-          className="mb-10 text-center text-[15px] leading-relaxed text-[#6E7284]"
+          className="mb-10 text-center text-[15px] leading-relaxed text-[#525252]"
           style={{
             letterSpacing: "-0.01em",
           }}
@@ -26,7 +26,7 @@ export default function AvailableDevices() {
         <div className="flex flex-col items-center gap-8 md:flex-row md:justify-center md:gap-12">
           {/* PC Browser */}
           <div className="flex flex-col items-center text-center md:mt-6">
-            <div className="mb-4 w-full max-w-[320px] overflow-hidden rounded-3xl md:max-w-[360px]">
+            <div className="mb-4 w-full max-w-[320px] overflow-hidden rounded-2xl md:max-w-[360px]">
               <img
                 src="/available device images/image 5.png"
                 alt="Kaptik on PC browser"
@@ -37,7 +37,7 @@ export default function AvailableDevices() {
             <p
               className="text-sm font-semibold"
               style={{
-                color: "#111327",
+                color: "#0A0A0A",
                 letterSpacing: "-0.02em",
               }}
             >
@@ -49,7 +49,7 @@ export default function AvailableDevices() {
           <div className="flex items-center gap-6">
             {/* iOS */}
             <div className="flex flex-col items-center text-center">
-              <div className="mb-4 w-full max-w-[130px] overflow-hidden rounded-3xl md:max-w-[140px]">
+              <div className="mb-4 w-full max-w-[130px] overflow-hidden rounded-2xl md:max-w-[140px]">
                 <img
                   src="/available device images/ios.png"
                   alt="Kaptik on iOS"
@@ -60,7 +60,7 @@ export default function AvailableDevices() {
               <p
                 className="text-sm font-semibold"
                 style={{
-                  color: "#111327",
+                  color: "#0A0A0A",
                   letterSpacing: "-0.02em",
                 }}
               >
@@ -70,7 +70,7 @@ export default function AvailableDevices() {
 
             {/* Android */}
             <div className="flex flex-col items-center text-center">
-              <div className="mb-4 w-full max-w-[130px] overflow-hidden rounded-3xl md:max-w-[140px]">
+              <div className="mb-4 w-full max-w-[130px] overflow-hidden rounded-2xl md:max-w-[140px]">
                 <img
                   src="/available device images/android.png"
                   alt="Kaptik on Android"
@@ -81,7 +81,7 @@ export default function AvailableDevices() {
               <p
                 className="text-sm font-semibold"
                 style={{
-                  color: "#111327",
+                  color: "#0A0A0A",
                   letterSpacing: "-0.02em",
                 }}
               >

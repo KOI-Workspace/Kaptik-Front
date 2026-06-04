@@ -16,14 +16,14 @@ export default function WhyKaptik() {
       <div className="mx-auto max-w-[1360px]">
         <h2
           className="mb-4 text-center text-sm font-semibold uppercase tracking-widest"
-          style={{ color: "#6E7284" }}
+          style={{ color: "#A3A3A3" }}
         >
           Why Kaptik?
         </h2>
         <h3
           className="mb-6 text-center text-[clamp(28px,3.5vw,38px)] font-bold leading-tight tracking-tight"
           style={{
-            color: "#111327",
+            color: "#0A0A0A",
             letterSpacing: "-0.03em",
           }}
         >
@@ -31,7 +31,7 @@ export default function WhyKaptik() {
         </h3>
         <p
           className="mx-auto mb-14 max-w-[560px] text-center text-base leading-relaxed"
-          style={{ color: "#6F7385" }}
+          style={{ color: "#525252" }}
         >
           K-pop optimized translation model with a cross-device, cross-platform
           experience that truly makes a difference for global K-pop fans.
@@ -40,34 +40,32 @@ export default function WhyKaptik() {
         <div className="grid gap-12 lg:grid-cols-2">
           {/* BEFORE */}
           <div
-            className="rounded-[24px] p-8 backdrop-blur-[14px]"
+            className="rounded-[16px] border border-[#EAEAEA] bg-white p-8"
             style={{
-              background: "rgba(255,255,255,0.78)",
-              boxShadow: "0 12px 30px rgba(26,31,56,0.08)",
-              border: "1px solid rgba(255,255,255,0.55)",
+              boxShadow: "var(--shadow-sm)",
             }}
           >
             <div className="mb-6 flex flex-wrap items-center gap-3">
               <h3
                 className="text-xl font-bold"
-                style={{ color: "#111327" }}
+                style={{ color: "#0A0A0A" }}
               >
                 BEFORE
               </h3>
               <span
                 className="rounded-full px-3 py-1 text-sm font-medium"
                 style={{
-                  background: "rgba(110, 114, 132, 0.2)",
-                  color: "#6E7284",
+                  background: "#F5F5F5",
+                  color: "#525252",
                 }}
               >
                 General subtitle
               </span>
             </div>
             <div
-              className="mb-6 overflow-hidden rounded-2xl"
+              className="mb-6 overflow-hidden rounded-2xl border border-[#EAEAEA]"
               style={{
-                boxShadow: "0 8px 24px rgba(26,31,56,0.1)",
+                boxShadow: "var(--shadow-sm)",
               }}
             >
               <video
@@ -82,11 +80,11 @@ export default function WhyKaptik() {
                 <li
                   key={i}
                   className="flex items-center gap-3 text-[15px] leading-relaxed"
-                  style={{ color: "#23263A" }}
+                  style={{ color: "#0A0A0A" }}
                 >
                   <span
                     className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
-                    style={{ color: "#E36A8B", background: "rgba(227,106,139,0.12)" }}
+                    style={{ color: "#DC2626", background: "#FEE2E2" }}
                     aria-hidden
                   >
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -101,33 +99,32 @@ export default function WhyKaptik() {
 
           {/* AFTER */}
           <div
-            className="rounded-[24px] p-8 backdrop-blur-[14px]"
+            className="rounded-[16px] border border-[#EAEAEA] bg-white p-8"
             style={{
-              background: "rgba(255,255,255,0.78)",
-              boxShadow: "0 12px 30px rgba(26,31,56,0.08)",
-              border: "1px solid rgba(255,255,255,0.55)",
+              boxShadow: "var(--shadow-sm)",
             }}
           >
             <div className="mb-6 flex flex-wrap items-center gap-3">
               <h3
                 className="text-xl font-bold"
-                style={{ color: "#111327" }}
+                style={{ color: "#0A0A0A" }}
               >
                 AFTER
               </h3>
               <span
-                className="rounded-full px-3 py-1 text-sm font-semibold text-white"
+                className="rounded-full px-3 py-1 text-sm font-semibold"
                 style={{
-                  background: "#E36A8B",
+                  background: "#EDE9FE",
+                  color: "#5B21B6",
                 }}
               >
                 Kaptik
               </span>
             </div>
             <div
-              className="mb-6 overflow-hidden rounded-2xl"
+              className="mb-6 overflow-hidden rounded-2xl border border-[#EAEAEA]"
               style={{
-                boxShadow: "0 8px 24px rgba(26,31,56,0.1)",
+                boxShadow: "var(--shadow-sm)",
               }}
             >
               <video
@@ -142,11 +139,11 @@ export default function WhyKaptik() {
                 <li
                   key={i}
                   className="flex items-center gap-3 text-[15px] leading-relaxed"
-                  style={{ color: "#23263A" }}
+                  style={{ color: "#0A0A0A" }}
                 >
                   <span
                     className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full"
-                    style={{ background: "#5E4CE6" }}
+                    style={{ background: "#8B5CF6" }}
                   />
                   {text}
                 </li>

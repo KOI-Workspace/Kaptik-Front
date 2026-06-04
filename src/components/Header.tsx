@@ -28,7 +28,7 @@ export default function Header({ onJoinWaitlist }: HeaderProps) {
           <span
             className="text-xl font-bold tracking-tight"
             style={{
-              color: "#111327",
+              color: "#0A0A0A",
               letterSpacing: "-0.04em",
             }}
           >
@@ -43,22 +43,22 @@ export default function Header({ onJoinWaitlist }: HeaderProps) {
         >
           <button
             onClick={() => scrollToSection("features")}
-            className="text-[15px] font-medium transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2 rounded-sm"
-            style={{ color: "#23263A", letterSpacing: "-0.01em" }}
+            className="text-[15px] font-medium transition-colors hover:text-[#0A0A0A] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2 rounded-sm"
+            style={{ color: "#525252", letterSpacing: "-0.01em" }}
           >
             Features
           </button>
           <button
             onClick={() => scrollToSection("faq")}
-            className="text-[15px] font-medium transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2 rounded-sm"
-            style={{ color: "#23263A", letterSpacing: "-0.01em" }}
+            className="text-[15px] font-medium transition-colors hover:text-[#0A0A0A] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2 rounded-sm"
+            style={{ color: "#525252", letterSpacing: "-0.01em" }}
           >
             FAQ
           </button>
           <button
             onClick={() => scrollToSection("testimonials")}
-            className="text-[15px] font-medium transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2 rounded-sm"
-            style={{ color: "#23263A", letterSpacing: "-0.01em" }}
+            className="text-[15px] font-medium transition-colors hover:text-[#0A0A0A] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2 rounded-sm"
+            style={{ color: "#525252", letterSpacing: "-0.01em" }}
           >
             Reviews
           </button>
@@ -68,12 +68,7 @@ export default function Header({ onJoinWaitlist }: HeaderProps) {
         <div className="flex items-center gap-4">
           <button
             onClick={onJoinWaitlist}
-            className="hidden rounded-[999px] px-7 py-3.5 text-[15px] font-medium transition-all hover:opacity-95 hover:shadow-[0 10px 28px rgba(94,76,230,0.35)] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2 disabled:opacity-45 disabled:cursor-not-allowed sm:block"
-            style={{
-              background: "#5E4CE6",
-              color: "#FFFFFF",
-              boxShadow: "0 6px 20px rgba(94,76,230,0.25)",
-            }}
+            className="hidden rounded-[999px] bg-[#0A0A0A] px-7 py-3.5 text-[15px] font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2 disabled:opacity-45 disabled:cursor-not-allowed sm:block"
           >
             Join Waitlist
           </button>
@@ -122,21 +117,21 @@ export default function Header({ onJoinWaitlist }: HeaderProps) {
             <button
               onClick={() => scrollToSection("features")}
               className="text-left text-lg font-medium"
-              style={{ color: "#23263A" }}
+              style={{ color: "#525252" }}
             >
               Features
             </button>
             <button
               onClick={() => scrollToSection("faq")}
               className="text-left text-lg font-medium"
-              style={{ color: "#23263A" }}
+              style={{ color: "#525252" }}
             >
               FAQ
             </button>
             <button
               onClick={() => scrollToSection("testimonials")}
               className="text-left text-lg font-medium"
-              style={{ color: "#23263A" }}
+              style={{ color: "#525252" }}
             >
               Reviews
             </button>
@@ -145,12 +140,7 @@ export default function Header({ onJoinWaitlist }: HeaderProps) {
                 onJoinWaitlist();
                 setMobileMenuOpen(false);
               }}
-              className="mt-4 w-fit rounded-[999px] px-7 py-3.5 text-[15px] font-medium transition-all hover:opacity-95 hover:shadow-[0 10px 28px rgba(94,76,230,0.35)]"
-              style={{
-                background: "#5E4CE6",
-                color: "#FFFFFF",
-                boxShadow: "0 6px 20px rgba(94,76,230,0.25)",
-              }}
+              className="mt-4 w-fit rounded-[999px] bg-[#0A0A0A] px-7 py-3.5 text-[15px] font-medium text-white transition-colors hover:bg-[#262626] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2"
             >
               Join Waitlist
             </button>

@@ -34,19 +34,17 @@ export default function AvailablePlatforms() {
         <h2
           className="mb-10 text-center text-[clamp(24px,3vw,32px)] font-bold leading-tight tracking-tight"
           style={{
-            color: "#111327",
+            color: "#0A0A0A",
             letterSpacing: "-0.03em",
           }}
         >
           Available on any platform
         </h2>
         <div
-          className="overflow-hidden rounded-2xl py-6"
+          className="overflow-hidden rounded-2xl border border-[#EAEAEA] bg-white py-6"
           style={{
             minHeight: "120px",
-            background: "rgba(255,255,255,0.6)",
-            boxShadow: "0 8px 24px rgba(26,31,56,0.06)",
-            border: "1px solid rgba(255,255,255,0.5)",
+            boxShadow: "var(--shadow-sm)",
           }}
         >
           <LogoLoop
@@ -57,7 +55,7 @@ export default function AvailablePlatforms() {
             gap={56}
             hoverSpeed={0}
             fadeOut
-            fadeOutColor="#f4eaf4"
+            fadeOutColor="#FFFFFF"
             scaleOnHover
             ariaLabel="Supported platforms"
           />

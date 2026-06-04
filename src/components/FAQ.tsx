@@ -124,7 +124,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
         <h2
           className="mb-4 text-center text-sm font-semibold uppercase tracking-widest"
           style={{
-            color: "#6E7284",
+            color: "#A3A3A3",
           }}
         >
           FAQ
@@ -133,7 +133,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
         <h3
           className="mb-6 text-center text-[clamp(28px,3.5vw,38px)] font-bold leading-tight tracking-tight"
           style={{
-            color: "#111327",
+            color: "#0A0A0A",
             letterSpacing: "-0.03em",
           }}
         >
@@ -142,7 +142,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
 
         <p
           className="mx-auto mb-12 max-w-[540px] text-center text-base leading-relaxed"
-          style={{ color: "#6F7385" }}
+          style={{ color: "#525252" }}
         >
           Find out what Kaptik is, how it connects with your favorite K-pop
           platforms, and how you can bring studio-quality subtitles into your
@@ -153,24 +153,21 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
           {faqItems.map((item) => (
             <div
               key={item.id}
-              className="overflow-hidden rounded-[24px]"
+              className="overflow-hidden rounded-[16px] border border-[#EAEAEA] bg-white"
               style={{
-                background: "rgba(255,255,255,0.78)",
-                backdropFilter: "blur(14px)",
-                boxShadow: "0 12px 30px rgba(26,31,56,0.08)",
-                border: "1px solid rgba(255,255,255,0.55)",
+                boxShadow: "var(--shadow-sm)",
               }}
             >
               <button
                 onClick={() => setOpenId(openId === item.id ? null : item.id)}
-                className="flex w-full items-center justify-between px-6 py-5 text-left transition-colors hover:bg-white/30 focus:outline-none"
+                className="flex w-full items-center justify-between px-6 py-5 text-left transition-colors hover:bg-[#FAFAFA] focus:outline-none"
                 aria-expanded={openId === item.id}
                 aria-controls={`faq-answer-${item.id}`}
                 id={`faq-question-${item.id}`}
               >
                 <span
                   className="text-base font-medium md:text-[17px]"
-                  style={{ color: "#23263A" }}
+                  style={{ color: "#0A0A0A" }}
                 >
                   {item.question}
                 </span>
@@ -205,8 +202,8 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
                   <p
                     className="border-t px-6 py-5"
                     style={{
-                      color: "#6F7385",
-                      borderColor: "rgba(17,19,39,0.08)",
+                      color: "#525252",
+                      borderColor: "#EAEAEA",
                       lineHeight: 1.6,
                     }}
                   >
@@ -222,11 +219,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
           <button
             type="button"
             onClick={handleOpenQuestionModal}
-            className="w-full max-w-[260px] rounded-[999px] px-8 py-4 text-base font-medium text-white transition-all hover:opacity-95 hover:shadow-[0_10px_28px_rgba(17,19,39,0.35)] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2"
-            style={{
-              background: "#111327",
-              boxShadow: "0 6px 20px rgba(17,19,39,0.25)",
-            }}
+            className="w-full max-w-[260px] rounded-[999px] bg-[#0A0A0A] px-8 py-4 text-base font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2"
           >
             Ask a question
           </button>
@@ -243,7 +236,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
           <button
             type="button"
             onClick={handleCloseQuestionModal}
-            className="absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity"
+            className="absolute inset-0 bg-black/55 backdrop-blur-sm transition-opacity"
             aria-label="Close modal"
           />
 
@@ -251,7 +244,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
             className="relative w-full max-w-[480px] rounded-[24px] p-7"
             style={{
               background: "#FFFFFF",
-              boxShadow: "0 18px 48px rgba(17,23,39,0.14)",
+              boxShadow: "var(--shadow-modal)",
             }}
           >
             <button
@@ -266,13 +259,13 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
             <h2
               id="faq-question-modal-title"
               className="mb-2 text-[22px] font-bold"
-              style={{ color: "#111327", letterSpacing: "-0.03em" }}
+              style={{ color: "#0A0A0A", letterSpacing: "-0.03em" }}
             >
               Ask anything about Kaptik
             </h2>
             <p
               className="mb-6 text-[15px]"
-              style={{ color: "#6F7385" }}
+              style={{ color: "#525252" }}
             >
               Leave your email and question, and we’ll get back to you.
             </p>
@@ -282,7 +275,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
                 <label
                   htmlFor="faq-question-email"
                   className="text-sm font-medium"
-                  style={{ color: "#23263A" }}
+                  style={{ color: "#0A0A0A" }}
                 >
                   Email to receive the answer
                 </label>
@@ -293,10 +286,10 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
                   value={questionEmail}
                   onChange={(e) => setQuestionEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full rounded-xl border px-4 py-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--violet-glow)] focus:ring-opacity-40"
+                  className="w-full rounded-xl border px-4 py-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]/40"
                   style={{
-                    borderColor: "#E9EAF2",
-                    color: "#111327",
+                    borderColor: "#EAEAEA",
+                    color: "#0A0A0A",
                   }}
                 />
               </div>
@@ -305,7 +298,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
                 <label
                   htmlFor="faq-question-content"
                   className="text-sm font-medium"
-                  style={{ color: "#23263A" }}
+                  style={{ color: "#0A0A0A" }}
                 >
                   Your question
                 </label>
@@ -316,10 +309,10 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
                   value={questionContent}
                   onChange={(e) => setQuestionContent(e.target.value)}
                   placeholder="Ask us anything you’re curious about."
-                  className="w-full resize-none rounded-xl border px-4 py-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--violet-glow)] focus:ring-opacity-40"
+                  className="w-full resize-none rounded-xl border px-4 py-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]/40"
                   style={{
-                    borderColor: "#E9EAF2",
-                    color: "#111327",
+                    borderColor: "#EAEAEA",
+                    color: "#0A0A0A",
                   }}
                 />
               </div>
@@ -332,7 +325,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex-1 rounded-[999px] bg-[#5E4CE6] px-6 py-3 text-sm font-medium text-white shadow-[0_10px_28px_rgba(94,76,230,0.35)] transition-all hover:-translate-y-[1px] hover:shadow-[0_14px_32px_rgba(94,76,230,0.45)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2"
+                  className="flex-1 rounded-[999px] bg-[#0A0A0A] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[#262626] disabled:opacity-45 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2"
                 >
                   {isSubmitting ? "Sending..." : "Send question"}
                 </button>
@@ -340,10 +333,10 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
                   type="button"
                   onClick={handleCloseQuestionModal}
                   disabled={isSubmitting}
-                  className="flex-1 rounded-[999px] border px-6 py-3 text-sm font-medium transition-colors hover:bg-gray-50"
+                  className="flex-1 rounded-[999px] border px-6 py-3 text-sm font-medium transition-colors hover:bg-[#FAFAFA]"
                   style={{
-                    borderColor: "#E9EAF2",
-                    color: "#23263A",
+                    borderColor: "#EAEAEA",
+                    color: "#0A0A0A",
                   }}
                 >
                   Cancel
@@ -364,7 +357,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
           <button
             type="button"
             onClick={handleCloseThankYouModal}
-            className="absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity"
+            className="absolute inset-0 bg-black/55 backdrop-blur-sm transition-opacity"
             aria-label="Close modal"
           />
 
@@ -372,7 +365,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
             className="relative w-full max-w-[440px] rounded-[24px] p-8 text-left"
             style={{
               background: "#FFFFFF",
-              boxShadow: "0 18px 48px rgba(17,23,39,0.14)",
+              boxShadow: "var(--shadow-modal)",
             }}
           >
             <button
@@ -387,13 +380,13 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
             <h2
               id="faq-question-thankyou-title"
               className="mb-2 text-[22px] font-bold"
-              style={{ color: "#111327", letterSpacing: "-0.03em" }}
+              style={{ color: "#0A0A0A", letterSpacing: "-0.03em" }}
             >
               Thank you!
             </h2>
             <p
               className="mb-6 text-[15px]"
-              style={{ color: "#6F7385" }}
+              style={{ color: "#525252" }}
             >
               We will reach you soon with an answer.
             </p>
@@ -401,12 +394,12 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
             <div className="mb-5">
               <p
                 className="mb-3 text-[15px] font-medium"
-                style={{ color: "#111327" }}
+                style={{ color: "#0A0A0A" }}
               >
                 Would you like to share with friends?
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
-                <div className="flex-1 rounded-[999px] border bg-[#F7F7FB] px-4 py-3 text-sm text-[#6F7385]">
+                <div className="flex-1 rounded-[999px] border border-[#EAEAEA] bg-[#FAFAFA] px-4 py-3 text-sm text-[#525252]">
                   {shareUrl}
                 </div>
                 <button
@@ -419,7 +412,7 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
                       });
                     }
                   }}
-                  className="rounded-[999px] bg-[#111327] px-6 py-3 text-sm font-medium text-white shadow-[0_10px_26px_rgba(11,15,40,0.28)] transition-all hover:-translate-y-[1px] hover:shadow-[0_14px_32px_rgba(11,15,40,0.35)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2"
+                  className="rounded-[999px] bg-[#0A0A0A] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[#262626] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2"
                 >
                   {isLinkCopied ? "Copied!" : "Copy"}
                 </button>
@@ -429,8 +422,8 @@ export default function FAQ({ onJoinWaitlist }: FAQProps) {
             <button
               type="button"
               onClick={handleCloseThankYouModal}
-              className="mt-2 w-full rounded-[999px] border px-8 py-4 text-sm font-medium text-[#111327] transition-colors hover:bg-gray-50"
-              style={{ borderColor: "#E2E4F0" }}
+              className="mt-2 w-full rounded-[999px] border px-8 py-4 text-sm font-medium text-[#0A0A0A] transition-colors hover:bg-[#FAFAFA]"
+              style={{ borderColor: "#EAEAEA" }}
             >
               Close
             </button>

@@ -131,7 +131,7 @@ export default function WaitlistModal({
       {/* Backdrop */}
       <button
         onClick={onClose}
-        className="absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity"
+        className="absolute inset-0 bg-black/55 backdrop-blur-sm transition-opacity"
         aria-label="Close modal"
       />
 
@@ -140,19 +140,19 @@ export default function WaitlistModal({
         className="relative w-full max-w-[440px] rounded-[24px] p-8"
         style={{
           background: "#FFFFFF",
-          boxShadow: "0 18px 48px rgba(17,23,39,0.14)",
+          boxShadow: "var(--shadow-modal)",
         }}
       >
         <h2
           id="waitlist-modal-title"
           className="mb-2 text-2xl font-bold"
-          style={{ color: "#111327", letterSpacing: "-0.03em" }}
+          style={{ color: "#0A0A0A", letterSpacing: "-0.03em" }}
         >
           Join the Waitlist
         </h2>
         <p
           className="mb-6 text-[15px]"
-          style={{ color: "#6F7385" }}
+          style={{ color: "#525252" }}
         >
           Be the first to know when Kaptik launches.
           <br />
@@ -167,10 +167,10 @@ export default function WaitlistModal({
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             disabled={isSubmitting}
-            className="mb-4 w-full rounded-xl border px-4 py-3.5 text-base transition-colors placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--violet-glow)] focus:ring-opacity-40 disabled:opacity-60"
+            className="mb-4 w-full rounded-lg border px-4 py-3.5 text-base transition-colors placeholder:text-[#A3A3A3] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]/40 disabled:opacity-60"
             style={{
-              borderColor: "#E9EAF2",
-              color: "#111327",
+              borderColor: "#EAEAEA",
+              color: "#0A0A0A",
             }}
             aria-invalid={!!error}
             aria-describedby={error ? "email-error" : undefined}
@@ -183,7 +183,7 @@ export default function WaitlistModal({
 
           <p
             className="mb-6 text-sm"
-            style={{ color: "#6F7385" }}
+            style={{ color: "#525252" }}
           >
             <span className="underline">
               {(waitlistCount ?? 200).toLocaleString()}
@@ -194,12 +194,7 @@ export default function WaitlistModal({
           <button
             type="submit"
             disabled={isSubmitting}
-            className="mb-4 w-full rounded-[999px] px-8 py-4 text-base font-medium transition-all hover:opacity-95 hover:shadow-[0 10px 28px rgba(94,76,230,0.35)] active:scale-[0.99] disabled:opacity-45 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2"
-            style={{
-              background: "#5E4CE6",
-              color: "#FFFFFF",
-              boxShadow: "0 6px 20px rgba(94,76,230,0.25)",
-            }}
+            className="mb-4 w-full rounded-[999px] bg-[#0A0A0A] px-8 py-4 text-base font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] disabled:opacity-45 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2"
           >
             {isSubmitting ? "Joining..." : "Join Waitlist"}
           </button>

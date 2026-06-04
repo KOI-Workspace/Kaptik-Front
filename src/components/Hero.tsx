@@ -21,7 +21,7 @@ export default function Hero({
           <div className="mb-8 flex items-center justify-center">
             <span
               className="text-[clamp(56px,12vw,120px)] font-bold tracking-tight"
-              style={{ color: "#111327", letterSpacing: "-0.06em" }}
+              style={{ color: "#0A0A0A", letterSpacing: "-0.06em" }}
             >
               Kaptik
             </span>
@@ -33,7 +33,7 @@ export default function Hero({
             tag="h1"
             className="max-w-[90%] text-[clamp(36px,6vw,72px)] font-bold leading-[1.02] tracking-tight md:max-w-[70%]"
             style={{
-              color: "#111327",
+              color: "#0A0A0A",
               letterSpacing: "-0.04em",
             }}
             splitType="chars"
@@ -50,7 +50,7 @@ export default function Hero({
           {/* Subcopy */}
           <p
             className="mt-6 max-w-[600px] text-[clamp(18px,2.2vw,22px)] leading-relaxed"
-            style={{ color: "#6F7385" }}
+            style={{ color: "#525252" }}
           >
             Kaptik turns chaotic live subtitles into clear, real-time translation with context, speaker labels, and K-pop-aware accuracy.
           </p>
@@ -60,19 +60,14 @@ export default function Hero({
               <button
                 type="button"
                 onClick={onJoinWaitlist}
-                className="w-full rounded-[999px] px-8 py-4 text-base font-medium transition-all hover:opacity-95 hover:shadow-[0 10px 28px rgba(94,76,230,0.35)] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2 sm:w-auto"
-                style={{
-                  background: "#5E4CE6",
-                  color: "#FFFFFF",
-                  boxShadow: "0 6px 20px rgba(94,76,230,0.25)",
-                }}
+                className="w-full rounded-[999px] bg-[#0A0A0A] px-8 py-4 text-base font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2 sm:w-auto"
               >
                 Join Waitlist
               </button>
             </div>
             <p
               className="mt-4 text-sm"
-              style={{ color: "#5E4CE6" }}
+              style={{ color: "#7C3AED" }}
             >
               Sign up now to get an exclusive launch promo code.
             </p>
