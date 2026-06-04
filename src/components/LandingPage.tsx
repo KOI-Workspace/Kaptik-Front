@@ -8,6 +8,7 @@ import WhyKaptik from "./WhyKaptik";
 import FAQ from "./FAQ";
 import Testimonials from "./Testimonials";
 import ThankYouModal from "./ThankYouModal";
+import Footer from "./Footer";
 
 export default function LandingPage() {
   const [thankYouOpen, setThankYouOpen] = useState(false);
@@ -36,6 +37,7 @@ export default function LandingPage() {
         <FAQ />
         <Testimonials />
       </main>
+      <Footer />
 
       <ThankYouModal isOpen={thankYouOpen} onClose={() => setThankYouOpen(false)} />
     </div>

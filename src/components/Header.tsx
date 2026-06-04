@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface HeaderProps {
   onJoinWaitlist: () => void;
@@ -8,12 +10,18 @@ interface HeaderProps {
 
 export default function Header({ onJoinWaitlist }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const scrollToSection = useCallback((id: string) => {
+    if (pathname !== "/") {
+      window.location.href = `/#${id}`;
+      return;
+    }
+
     const el = document.getElementById(id);
     el?.scrollIntoView({ behavior: "smooth" });
     setMobileMenuOpen(false);
-  }, []);
+  }, [pathname]);
 
   return (
     <header
@@ -24,7 +32,7 @@ export default function Header({ onJoinWaitlist }: HeaderProps) {
     >
       <div className="relative mx-auto flex h-full max-w-[1360px] items-center justify-between px-8 md:px-12">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2" aria-label="Kaptik Home">
+        <Link href="/" className="flex items-center gap-2" aria-label="Kaptik Home">
           <span
             className="text-xl font-bold tracking-tight"
             style={{
@@ -34,7 +42,7 @@ export default function Header({ onJoinWaitlist }: HeaderProps) {
           >
             Kaptik
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Nav - Center */}
         <nav
@@ -66,6 +74,12 @@ export default function Header({ onJoinWaitlist }: HeaderProps) {
 
         {/* CTA - Right */}
         <div className="flex items-center gap-4">
+          <Link
+            href="/pricing"
+            className="hidden rounded-[999px] border border-[#EAEAEA] bg-white px-6 py-3.5 text-[15px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#FAFAFA] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2 sm:block"
+          >
+            Pricing
+          </Link>
           <button
             onClick={onJoinWaitlist}
             className="hidden rounded-[999px] bg-[#0A0A0A] px-7 py-3.5 text-[15px] font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2 disabled:opacity-45 disabled:cursor-not-allowed sm:block"
@@ -144,6 +158,14 @@ export default function Header({ onJoinWaitlist }: HeaderProps) {
             >
               Join Waitlist
             </button>
+            <Link
+              href="/pricing"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-left text-lg font-medium"
+              style={{ color: "#525252" }}
+            >
+              Pricing
+            </Link>
           </nav>
         </div>
       )}
