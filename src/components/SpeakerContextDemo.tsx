@@ -52,7 +52,7 @@ const dialogues: Dialogue[] = [
 export default function SpeakerContextDemo() {
   return (
     <div className="flex w-full justify-center">
-      <div className="w-full max-w-[480px] rounded-[24px] border border-[#EDE9FE] bg-[#FBFAFF] p-6 shadow-[0_24px_70px_rgba(91,33,182,0.12)] md:p-8">
+      <div className="w-full max-w-[480px] rounded-[24px] bg-[#0A0A0A] p-6 shadow-[0_28px_80px_rgba(10,10,10,0.24)] ring-1 ring-[#262626] md:p-8">
         <div className="space-y-8">
           {dialogues.map((d) => (
             <div key={d.name}>
@@ -77,7 +77,7 @@ export default function SpeakerContextDemo() {
               </div>
 
               {/* 대사 — 강조 구간은 보라 밑줄 */}
-              <p className="pl-12 text-[17px] font-semibold leading-snug text-[#171717]">
+              <p className="pl-12 text-[17px] font-semibold leading-snug text-white">
                 {d.line.map((seg, i) =>
                   seg.highlight ? (
                     <span
@@ -93,7 +93,7 @@ export default function SpeakerContextDemo() {
               </p>
 
               {/* cultural context 카드 — 대사 아래에 떠 있는 형태 */}
-              <div className="ml-12 mt-3 rounded-[16px] border border-[#DDD6FE] bg-white p-4 shadow-[0_12px_30px_rgba(109,40,217,0.08)]">
+              <div className="ml-12 mt-3 rounded-[16px] border border-[#8B5CF6]/40 bg-[#15101F] p-4">
                 <div className="mb-1.5 flex items-start justify-between gap-3">
                   <h5 className="text-[14px] font-bold text-[#A78BFA]">
                     {d.context.title}
@@ -115,7 +115,7 @@ export default function SpeakerContextDemo() {
                     />
                   </svg>
                 </div>
-                <p className="text-[13.5px] leading-relaxed text-[#525252]">
+                <p className="text-[13.5px] leading-relaxed text-[#D1D5DB]">
                   {d.context.body}
                 </p>
               </div>
