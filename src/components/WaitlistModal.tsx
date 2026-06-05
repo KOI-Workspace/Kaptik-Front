@@ -110,6 +110,10 @@ export default function WaitlistModal({
         console.error("Meta conversion API call failed (waitlist):", conversionError);
       }
 
+      // 새 이메일이 실제로 추가됐을 때만 버블 인원수를 즉시 +1 하도록 알린다.
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new Event("waitlist:joined"));
+      }
       onSuccess();
       onClose();
     } catch (err) {
