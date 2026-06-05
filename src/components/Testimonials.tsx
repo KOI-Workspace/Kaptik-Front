@@ -9,24 +9,6 @@ function getTestimonialIndex(currentIndex: number, slotIndex: number): number {
   return (currentIndex + slotIndex + TOTAL) % TOTAL;
 }
 
-function getInitials(name: string): string {
-  return name
-    .split(" ")
-    .map((n) => n[0])
-    .join("")
-    .toUpperCase()
-    .slice(0, 2);
-}
-
-/** 이름에서 아바타용 색상 해시 */
-function getAvatarColor(name: string): string {
-  // Lavender Pulse: 아바타 색은 보라·핑크·회색 3종으로 제한
-  const colors = ["#8B5CF6", "#EC4899", "#737373"];
-  let hash = 0;
-  for (let i = 0; i < name.length; i++) hash += name.charCodeAt(i);
-  return colors[Math.abs(hash) % colors.length];
-}
-
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -42,20 +24,14 @@ export default function Testimonials() {
     <section id="testimonials" className="relative px-5 py-16 md:px-12 md:py-20 lg:px-16">
       <div className="mx-auto max-w-[1280px]">
         <h2
-          className="mx-auto mb-4 max-w-[820px] text-center text-[clamp(30px,8vw,44px)] font-bold leading-tight tracking-tight md:text-[clamp(34px,4vw,48px)]"
+          className="mx-auto mb-14 max-w-[820px] text-center text-[clamp(30px,8vw,44px)] font-bold leading-tight tracking-tight md:text-[clamp(34px,4vw,48px)]"
           style={{
             color: "#0A0A0A",
             letterSpacing: "-0.03em",
           }}
         >
-          What our demo users are saying?
+          What our demo users are saying
         </h2>
-        <p
-          className="mx-auto mb-14 max-w-[560px] text-center text-base leading-relaxed"
-          style={{ color: "#525252" }}
-        >
-          Real K-pop fans from around the world share how Kaptik helps them enjoy Bubble, Fromm, Weverse, and more.
-        </p>
 
         {/* 캐러셀 영역 */}
         <div className="relative flex items-center justify-center gap-4 md:gap-6">
@@ -96,14 +72,6 @@ export default function Testimonials() {
                     border: "1px solid #EAEAEA",
                   }}
                 >
-                  {/* 아바타 (이니셜) */}
-                  <div
-                    className="mb-4 flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-lg font-semibold text-white"
-                    style={{ backgroundColor: getAvatarColor(t.name) }}
-                  >
-                    {getInitials(t.name)}
-                  </div>
-
                   <blockquote
                     className="mb-5 flex-1 text-[15px] leading-relaxed md:text-base"
                     style={{ color: "#525252" }}

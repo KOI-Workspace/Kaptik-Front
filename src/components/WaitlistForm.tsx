@@ -1,43 +1,17 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
-import Link from "next/link";
+import { FormEvent, useState } from "react";
 import { getSupabaseClient } from "@/lib/supabaseClient";
+import WaitlistBubble from "./WaitlistBubble";
 
 interface WaitlistFormProps {
   onSuccess: () => void;
 }
 
-const WAITLIST_DISPLAY_OFFSET = 200;
-const WAITLIST_LIMIT = 1000;
-
 export default function WaitlistForm({ onSuccess }: WaitlistFormProps) {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
-  const [waitlistCount, setWaitlistCount] = useState<number | null>(null);
-  const displayCount = waitlistCount ?? WAITLIST_DISPLAY_OFFSET;
-  const spotsLeft = Math.max(WAITLIST_LIMIT - displayCount, 0);
-
-  useEffect(() => {
-    const fetchWaitlistCount = async () => {
-      const supabase = getSupabaseClient();
-      const { count, error: countError } = await supabase
-        .from("waitlist")
-        .select("*", { count: "exact", head: true });
-
-      if (countError) {
-        console.error(countError);
-        return;
-      }
-
-      if (typeof count === "number") {
-        setWaitlistCount(WAITLIST_DISPLAY_OFFSET + count);
-      }
-    };
-
-    fetchWaitlistCount();
-  }, []);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -52,11 +26,6 @@ export default function WaitlistForm({ onSuccess }: WaitlistFormProps) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(trimmed)) {
       setError("Please enter a valid email address.");
-      return;
-    }
-
-    if ((waitlistCount ?? WAITLIST_DISPLAY_OFFSET) >= WAITLIST_LIMIT) {
-      setError("The waitlist is full.");
       return;
     }
 
@@ -103,7 +72,6 @@ export default function WaitlistForm({ onSuccess }: WaitlistFormProps) {
       }
 
       setEmail("");
-      setWaitlistCount((current) => (current === null ? current : current + 1));
       onSuccess();
     } catch (err) {
       console.error(err);
@@ -147,23 +115,7 @@ export default function WaitlistForm({ onSuccess }: WaitlistFormProps) {
       )}
 
       <div id="waitlist-meta" className="mt-3 flex justify-center sm:mt-4">
-        <p className="waitlist-bubble relative whitespace-nowrap rounded-[999px] border border-[#C4B5FD] bg-[#8B5CF6] px-3.5 py-2 text-center text-[11px] font-medium leading-none text-white shadow-[0_10px_24px_rgba(139,92,246,0.22)] sm:px-5 sm:py-2.5 sm:text-sm">
-          <span className="font-bold text-white">
-            {displayCount.toLocaleString()}
-          </span>{" "}
-          people joined.{" "}
-          <span className="font-bold text-white">
-            {spotsLeft.toLocaleString()}
-          </span>{" "}
-          spots left for the free{" "}
-          <Link
-            href="/pricing"
-            className="font-bold text-white underline underline-offset-2 transition-opacity hover:opacity-80"
-          >
-            Basic Plan
-          </Link>{" "}
-          trial.
-        </p>
+        <WaitlistBubble />
       </div>
     </form>
   );
