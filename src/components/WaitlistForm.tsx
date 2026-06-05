@@ -6,9 +6,14 @@ import WaitlistBubble from "./WaitlistBubble";
 
 interface WaitlistFormProps {
   onSuccess: () => void;
+  // 폼 하단의 보라 버블(인원수) 노출 여부. 기본은 노출.
+  showBubble?: boolean;
 }
 
-export default function WaitlistForm({ onSuccess }: WaitlistFormProps) {
+export default function WaitlistForm({
+  onSuccess,
+  showBubble = true,
+}: WaitlistFormProps) {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -118,9 +123,11 @@ export default function WaitlistForm({ onSuccess }: WaitlistFormProps) {
         </p>
       )}
 
-      <div id="waitlist-meta" className="mt-7 flex justify-center md:mt-10">
-        <WaitlistBubble />
-      </div>
+      {showBubble && (
+        <div id="waitlist-meta" className="mt-7 flex justify-center md:mt-10">
+          <WaitlistBubble />
+        </div>
+      )}
     </form>
   );
 }

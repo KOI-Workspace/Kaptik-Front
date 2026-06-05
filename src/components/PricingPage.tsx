@@ -1,8 +1,11 @@
 "use client";
 
+import { useCallback, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import WaitlistBubble from "./WaitlistBubble";
+import WaitlistForm from "./WaitlistForm";
+import ThankYouModal from "./ThankYouModal";
 
 const pricingPlans = [
   {
@@ -27,13 +30,24 @@ const pricingPlans = [
 ];
 
 export default function PricingPage() {
-  const goToWaitlist = () => {
-    window.location.href = "/#waitlist-form";
-  };
+  const [thankYouOpen, setThankYouOpen] = useState(false);
+
+  // 헤더 CTA 클릭 시 페이지 하단 웨이트리스트 폼으로 스크롤 + 포커스
+  const focusWaitlist = useCallback(() => {
+    const form = document.getElementById("waitlist-form");
+    const input = document.getElementById("waitlist-email") as HTMLInputElement | null;
+
+    form?.scrollIntoView({ behavior: "smooth", block: "center" });
+    window.setTimeout(() => input?.focus(), 350);
+  }, []);
+
+  const handleWaitlistSuccess = useCallback(() => {
+    setThankYouOpen(true);
+  }, []);
 
   return (
     <div className="relative z-10 min-h-screen bg-white">
-      <Header onJoinWaitlist={goToWaitlist} />
+      <Header onJoinWaitlist={focusWaitlist} />
 
       <main className="px-6 pb-24 pt-[152px] md:px-12 lg:px-16">
         <section className="mx-auto max-w-[1360px]">
@@ -101,18 +115,14 @@ export default function PricingPage() {
             ))}
           </div>
 
-          <div className="mt-10 flex justify-center">
-            <button
-              type="button"
-              onClick={goToWaitlist}
-              className="rounded-[999px] bg-[#0A0A0A] px-8 py-3.5 text-[15px] font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2"
-            >
-              Join the waitlist
-            </button>
+          <div className="mt-6 flex justify-center">
+            <WaitlistForm onSuccess={handleWaitlistSuccess} showBubble={false} />
           </div>
         </section>
       </main>
       <Footer />
+
+      <ThankYouModal isOpen={thankYouOpen} onClose={() => setThankYouOpen(false)} />
     </div>
   );
 }
