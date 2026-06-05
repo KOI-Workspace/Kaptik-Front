@@ -52,18 +52,18 @@ const dialogues: Dialogue[] = [
 export default function SpeakerContextDemo() {
   return (
     <div className="flex w-full justify-center">
-      <div className="w-full max-w-[520px] px-2">
-        <div className="space-y-12">
+      <div className="w-full max-w-[480px] rounded-[24px] border border-[#EDE9FE] bg-[#FBFAFF] p-6 shadow-[0_24px_70px_rgba(91,33,182,0.12)] md:p-8">
+        <div className="space-y-8">
           {dialogues.map((d) => (
-            <div key={d.name} className="flex flex-col items-start">
+            <div key={d.name}>
               {/* 화자 헤더 — 아바타 + 이름 */}
-              <div className="mb-3 flex items-center gap-3">
+              <div className="mb-2 flex items-center gap-3">
                 <span
                   className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[12px] font-bold"
                   style={{
                     color: d.color,
-                    background: `${d.color}22`,
-                    boxShadow: `inset 0 0 0 1.5px ${d.color}88`,
+                    background: `${d.color}1A`, // 12% 불투명 배경
+                    boxShadow: `inset 0 0 0 1.5px ${d.color}66`,
                   }}
                 >
                   {d.initial}
@@ -76,32 +76,25 @@ export default function SpeakerContextDemo() {
                 </span>
               </div>
 
-              {/* 대사 — Kaptik 다크 모드 말풍선 스타일 */}
-              <div 
-                className="ml-2 rounded-2xl rounded-tl-none px-5 py-3.5 shadow-xl border border-white/10 backdrop-blur-md"
-                style={{ 
-                  backgroundColor: "rgba(10, 10, 10, 0.95)",
-                }}
-              >
-                <p className="text-[17px] font-semibold leading-snug text-white">
-                  {d.line.map((seg, i) =>
-                    seg.highlight ? (
-                      <span
-                        key={i}
-                        className="text-[#A78BFA] underline decoration-[#8B5CF6]/70 decoration-2 underline-offset-[4px]"
-                      >
-                        {seg.text}
-                      </span>
-                    ) : (
-                      <span key={i}>{seg.text}</span>
-                    )
-                  )}
-                </p>
-              </div>
+              {/* 대사 — 강조 구간은 보라 밑줄 */}
+              <p className="pl-12 text-[17px] font-semibold leading-snug text-[#171717]">
+                {d.line.map((seg, i) =>
+                  seg.highlight ? (
+                    <span
+                      key={i}
+                      className="text-[#A78BFA] underline decoration-[#8B5CF6]/70 decoration-2 underline-offset-[3px]"
+                    >
+                      {seg.text}
+                    </span>
+                  ) : (
+                    <span key={i}>{seg.text}</span>
+                  )
+                )}
+              </p>
 
-              {/* cultural context 카드 — 이전 스타일로 완전 복구 */}
-              <div className="ml-10 mt-4 w-[92%] rounded-[16px] border border-[#8B5CF6]/40 bg-[#15101F] p-4 shadow-lg">
-                <div className="mb-2 flex items-start justify-between gap-3">
+              {/* cultural context 카드 — 대사 아래에 떠 있는 형태 */}
+              <div className="ml-12 mt-3 rounded-[16px] border border-[#DDD6FE] bg-white p-4 shadow-[0_12px_30px_rgba(109,40,217,0.08)]">
+                <div className="mb-1.5 flex items-start justify-between gap-3">
                   <h5 className="text-[14px] font-bold text-[#A78BFA]">
                     {d.context.title}
                   </h5>
@@ -122,7 +115,7 @@ export default function SpeakerContextDemo() {
                     />
                   </svg>
                 </div>
-                <p className="text-[13.5px] leading-relaxed text-[#D1D5DB]">
+                <p className="text-[13.5px] leading-relaxed text-[#525252]">
                   {d.context.body}
                 </p>
               </div>

@@ -53,15 +53,8 @@ export default function DevicesDemo() {
             <img 
               src="/image/herosection_mockupsideimages/cortis.jpg" 
               alt="Cortis Performance" 
-              className="absolute inset-0 h-full w-full object-cover opacity-60"
+              className="absolute inset-0 h-full w-full object-cover opacity-90"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#1E1B2E]/40 via-[#0A0A0A]/40 to-[#0A0A0A]/40" />
-            {/* 재생 버튼 */}
-            <span className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 backdrop-blur-sm">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </span>
             {/* 화면 하단 Kaptik 자막 오버레이 */}
             <div className="absolute inset-x-0 bottom-3 flex justify-center px-4">
               <span className="rounded-[8px] bg-black/65 px-3 py-1.5 text-[12px] font-semibold text-white backdrop-blur-sm">
@@ -121,13 +114,8 @@ export default function DevicesDemo() {
                 <img 
                   src="/image/herosection_mockupsideimages/cortis.jpg" 
                   alt="Cortis Live" 
-                  className="absolute inset-0 h-full w-full object-cover opacity-60"
+                  className="absolute inset-0 h-full w-full object-cover opacity-90"
                 />
-                <span className="absolute left-1/2 top-1/2 flex h-5 w-5 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/15">
-                  <svg width="8" height="8" viewBox="0 0 24 24" fill="white">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </span>
                 {/* Weverse 출처 배지 */}
                 <span className="absolute right-1.5 top-1.5 flex items-center gap-0.5 rounded-[3px] bg-black/55 px-1 py-0.5 backdrop-blur-sm">
                   <img src="/image/fandom platform logos_png/Weverse_logo 1.png" alt="Weverse" className="h-2 w-2 object-contain" />
