@@ -54,7 +54,7 @@ export default function WhyKaptik() {
     <section id="features" className="relative py-16 md:py-20">
       <div className="mx-auto max-w-[1120px] px-5 md:px-12 lg:px-16">
         <h2
-          className="mx-auto mb-8 max-w-[820px] text-center text-[clamp(30px,8vw,44px)] font-bold leading-tight tracking-tight md:mb-12 md:text-[clamp(34px,4vw,48px)]"
+          className="mx-auto mb-8 hidden max-w-[820px] text-center text-[clamp(30px,8vw,44px)] font-bold leading-tight tracking-tight md:mb-12 md:block md:text-[clamp(34px,4vw,48px)]"
           style={{
             color: "#0A0A0A",
             letterSpacing: "-0.03em",

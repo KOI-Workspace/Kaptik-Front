@@ -114,7 +114,7 @@ export default function WaitlistForm({ onSuccess }: WaitlistFormProps) {
         </p>
       )}
 
-      <div id="waitlist-meta" className="mt-3 flex justify-center sm:mt-4">
+      <div id="waitlist-meta" className="mt-7 flex justify-center md:mt-10">
         <WaitlistBubble />
       </div>
     </form>
