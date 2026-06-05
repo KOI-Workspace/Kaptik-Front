@@ -131,9 +131,7 @@ export default function FAQ() {
           className="mx-auto mb-12 max-w-[540px] text-center text-base leading-relaxed"
           style={{ color: "#525252" }}
         >
-          Find out what Kaptik is, how it connects with your favorite K-pop
-          platforms, and how you can bring studio-quality subtitles into your
-          daily fandom life.
+Find out what Kaptik is and how it brings studio-quality subtitles into your fandom life.
         </p>
 
         <div className="space-y-2">
