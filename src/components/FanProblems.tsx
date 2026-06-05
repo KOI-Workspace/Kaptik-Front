@@ -29,7 +29,7 @@ export default function FanProblems() {
             letterSpacing: "-0.03em",
           }}
         >
-          These are the problems K-pop fans face.
+          These are the problems K-pop fans&nbsp;face.
         </h2>
 
         <div className="grid gap-5 md:grid-cols-3">
