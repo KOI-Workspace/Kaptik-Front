@@ -114,9 +114,9 @@ export default function WaitlistForm({ onSuccess }: WaitlistFormProps) {
     <form
       id="waitlist-form"
       onSubmit={handleSubmit}
-      className="mt-8 w-full max-w-[560px]"
+      className="mt-6 w-full max-w-[560px] min-w-0 sm:mt-8"
     >
-      <div className="flex flex-col gap-3 rounded-[18px] border border-[#EAEAEA] bg-white p-2 shadow-[0_16px_45px_rgba(10,10,10,0.08)] sm:flex-row">
+      <div className="flex min-w-0 flex-col gap-3 rounded-[18px] border border-[#EAEAEA] bg-white p-2 shadow-[0_16px_45px_rgba(10,10,10,0.08)] sm:flex-row">
         <input
           id="waitlist-email"
           type="email"
@@ -124,14 +124,14 @@ export default function WaitlistForm({ onSuccess }: WaitlistFormProps) {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email"
           disabled={isSubmitting}
-          className="min-h-[52px] flex-1 rounded-[12px] px-4 text-base text-[#0A0A0A] outline-none placeholder:text-[#A3A3A3] disabled:opacity-60"
+          className="min-h-[48px] min-w-0 flex-1 rounded-[12px] px-4 text-base text-[#0A0A0A] outline-none placeholder:text-[#A3A3A3] disabled:opacity-60 sm:min-h-[52px]"
           aria-invalid={!!error}
           aria-describedby={error ? "waitlist-email-error" : "waitlist-meta"}
         />
         <button
           type="submit"
           disabled={isSubmitting}
-          className="min-h-[52px] shrink-0 rounded-[999px] bg-[#0A0A0A] px-6 text-base font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-45 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2"
+          className="min-h-[48px] shrink-0 rounded-[999px] bg-[#0A0A0A] px-6 text-base font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-45 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2 sm:min-h-[52px]"
         >
           {isSubmitting ? "Joining..." : "Join Waitlist"}
         </button>
@@ -143,7 +143,7 @@ export default function WaitlistForm({ onSuccess }: WaitlistFormProps) {
         </p>
       )}
 
-      <p id="waitlist-meta" className="mt-3 text-sm leading-6 text-[#525252]">
+      <p id="waitlist-meta" className="mt-2 text-sm leading-5 text-[#525252] sm:mt-3 sm:leading-6">
         <span className="font-semibold text-[#0A0A0A]">
           {(waitlistCount ?? WAITLIST_DISPLAY_OFFSET).toLocaleString()}
         </span>{" "}

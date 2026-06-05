@@ -25,10 +25,7 @@ export default function Header({ onJoinWaitlist }: HeaderProps) {
 
   return (
     <header
-      className="fixed left-0 right-0 top-0 z-50 h-[88px]"
-      style={{
-        background: "transparent",
-      }}
+      className="fixed left-0 right-0 top-0 z-50 h-[88px] border-b border-[#EAEAEA] bg-white"
     >
       <div className="relative mx-auto flex h-full max-w-[1360px] items-center justify-between px-8 md:px-12">
         {/* Logo */}
