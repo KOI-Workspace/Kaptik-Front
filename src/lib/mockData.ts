@@ -21,6 +21,12 @@ export const faqItems = [
     answer:
       "Kaptik recognizes live audio, identifies who is speaking, and enhances translation with a K-pop glossary built from fandom slang and Korean expressions. On top of that, real Korean translators add the cultural context and nuance that automatic tools miss. Live captions may take a few seconds to appear, but you can tap any subtitle to rewind to the exact moment it started so that you never miss the conversation.",
   },
+  {
+    id: "4",
+    question: "Isn't this just the same as AI translation?",
+    answer:
+      "Not quite. Kaptik does use AI, but it's AI built and trained by professional Korean translators, not a generic auto-translator. We trained it on real human translations, so it captures the natural tone and style that fans actually want, instead of stiff machine output. And the cultural context, the notes that explain jokes, slang, and references, is written by real people, not generated automatically.",
+  },
 ] as const;
 
 export const testimonials = [
