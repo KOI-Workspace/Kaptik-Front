@@ -39,7 +39,7 @@ const solutionFeatures: SolutionFeature[] = [
     title: "Catch every joke, slang, and hidden meaning your bias says.",
     description:
       "Real Korean translators write the explanations for jokes, slang, fandom terms, and cultural references that regular subtitles often miss, so nothing gets lost.",
-    badge: "Made by Korean translators, not AI",
+    badge: "Made by Korean translators",
     imageSide: "right",
   },
   {
