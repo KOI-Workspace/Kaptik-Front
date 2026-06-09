@@ -10,7 +10,7 @@ import ThankYouModal from "./ThankYouModal";
 const pricingPlans = [
   {
     name: "Basic",
-    price: "$1.9",
+    price: "$2.9",
     description: "For fans who just want to catch every live moment.",
     features: [
       "Unlimited live video viewing",
@@ -19,7 +19,7 @@ const pricingPlans = [
   },
   {
     name: "Pro",
-    price: "$9.9",
+    price: "$7.9",
     description: "For fans who want subtitles on everything, everywhere.",
     features: [
       "Unlimited subtitles for any video, on every platform",
