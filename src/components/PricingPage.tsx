@@ -32,22 +32,13 @@ const pricingPlans = [
 export default function PricingPage() {
   const [thankYouOpen, setThankYouOpen] = useState(false);
 
-  // 헤더 CTA 클릭 시 페이지 하단 웨이트리스트 폼으로 스크롤 + 포커스
-  const focusWaitlist = useCallback(() => {
-    const form = document.getElementById("waitlist-form");
-    const input = document.getElementById("waitlist-email") as HTMLInputElement | null;
-
-    form?.scrollIntoView({ behavior: "smooth", block: "center" });
-    window.setTimeout(() => input?.focus(), 350);
-  }, []);
-
   const handleWaitlistSuccess = useCallback(() => {
     setThankYouOpen(true);
   }, []);
 
   return (
     <div className="relative z-10 min-h-screen bg-white">
-      <Header onJoinWaitlist={focusWaitlist} />
+      <Header />
 
       <main className="px-6 pb-24 pt-[152px] md:px-12 lg:px-16">
         <section className="mx-auto max-w-[1360px]">

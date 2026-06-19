@@ -4,11 +4,7 @@ import { useState, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-interface HeaderProps {
-  onJoinWaitlist: () => void;
-}
-
-export default function Header({ onJoinWaitlist }: HeaderProps) {
+export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -77,12 +73,12 @@ export default function Header({ onJoinWaitlist }: HeaderProps) {
           >
             Pricing
           </Link>
-          <button
-            onClick={onJoinWaitlist}
-            className="hidden rounded-[999px] bg-[#0A0A0A] px-6 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none disabled:cursor-not-allowed disabled:opacity-45 sm:block"
+          <Link
+            href="/login"
+            className="hidden rounded-[999px] bg-[#0A0A0A] px-6 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none sm:block"
           >
-            Join Waitlist
-          </button>
+            Sign in
+          </Link>
 
           {/* Mobile menu button */}
           <button
@@ -153,6 +149,14 @@ export default function Header({ onJoinWaitlist }: HeaderProps) {
               style={{ color: "#525252" }}
             >
               Pricing
+            </Link>
+            <Link
+              href="/login"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-left text-lg font-medium"
+              style={{ color: "#0A0A0A" }}
+            >
+              Sign in
             </Link>
           </nav>
         </div>

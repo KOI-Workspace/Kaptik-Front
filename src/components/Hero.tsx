@@ -1,15 +1,9 @@
 "use client";
 
 import { useCallback } from "react";
-import WaitlistForm from "./WaitlistForm";
+import InstallExtensionButton from "./InstallExtensionButton";
 
-interface HeroProps {
-  onWaitlistSuccess: () => void;
-}
-
-export default function Hero({
-  onWaitlistSuccess,
-}: HeroProps) {
+export default function Hero() {
   // 하단 가이드 클릭 시 다음 섹션으로 부드럽게 스크롤
   const scrollToNext = useCallback(() => {
     const targetId = window.matchMedia("(min-width: 768px)").matches
@@ -39,7 +33,7 @@ export default function Hero({
             <p className="mt-4 max-w-[620px] text-[17px] font-medium leading-relaxed text-[#525252] md:mt-5 md:text-xl">
               Available on Weverse, YouTube, Instagram, TikTok, and more.
             </p>
-            <WaitlistForm onSuccess={onWaitlistSuccess} />
+            <InstallExtensionButton className="mt-5 sm:mt-8" />
           </div>
 
           {/* 오른쪽: 휴대폰 프레임 안에 재생되는 제품 영상 */}
