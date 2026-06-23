@@ -27,7 +27,7 @@ export default function FAQ() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [isLinkCopied, setIsLinkCopied] = useState(false);
-  const shareUrl = "https://kaptik-subtitle.vercel.app/";
+  const shareUrl = "https://kaptik.site/";
 
   const handleOpenQuestionModal = () => {
     setIsQuestionModalOpen(true);

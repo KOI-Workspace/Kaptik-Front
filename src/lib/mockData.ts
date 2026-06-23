@@ -4,7 +4,7 @@
 
 export const MOCK_WAITLIST_COUNT = 1247;
 
-export const MOCK_SITE_LINK = "https://kaptik-subtitle.vercel.app/";
+export const MOCK_SITE_LINK = "https://kaptik.site/";
 
 export const PRIVACY_POLICY_LINK = "https://notion.so/kaptik-privacy"; // Placeholder - user will provide later
 

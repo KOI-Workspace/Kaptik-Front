@@ -3,7 +3,7 @@
 ## 프로젝트 개요
 Kaptik 서비스의 웨이트리스트 랜딩페이지. Next.js 기반으로 제작되었으며, Vercel에 배포됩니다.
 
-- **배포 URL**: kaptik-subtitle.vercel.app
+- **배포 URL**: kaptik.site
 - **배포 방식**: `main` 브랜치에 push하면 Vercel 자동 배포
 
 ## 기술 스택

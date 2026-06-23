@@ -4,7 +4,7 @@ import "./globals.css";
 import MetaPixel from "@/components/MetaPixel";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kaptik-subtitle.vercel.app"),
+  metadataBase: new URL("https://kaptik.site"),
   title: "Kaptik — Ultimate Subtitle for Kpop Fans",
   description:
     "For every Kpop moment. Accurate subtitles with speaker identification, fandom glossary, and support across Bubble, Weverse, YouTube & more.",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "Kaptik — Ultimate Subtitle for Kpop Fans",
     description:
       "For every Kpop moment. Accurate subtitles with speaker identification, fandom glossary, and support across Bubble, Weverse, YouTube & more.",
-    url: "https://kaptik-subtitle.vercel.app/",
+    url: "https://kaptik.site/",
     type: "website",
     images: [
       {
