@@ -63,7 +63,9 @@ export async function loginWithGoogle(idToken: string, email: string): Promise<A
 export function decodeGoogleIdToken(idToken: string): { email: string; name?: string; picture?: string } | null {
   try {
     const payload = idToken.split(".")[1];
-    const decoded = JSON.parse(atob(payload.replace(/-/g, "+").replace(/_/g, "/")));
+    const binaryStr = atob(payload.replace(/-/g, "+").replace(/_/g, "/"));
+    const bytes = Uint8Array.from(binaryStr, (c) => c.charCodeAt(0));
+    const decoded = JSON.parse(new TextDecoder().decode(bytes));
     return {
       email: decoded.email as string,
       name: decoded.name as string | undefined,
