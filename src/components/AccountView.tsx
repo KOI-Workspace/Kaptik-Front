@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import InstallExtensionButton from "./InstallExtensionButton";
+import { getAuth, clearAuth, type AuthUser } from "@/lib/auth";
 
 const SUBTITLE_LANGUAGES = [
   { value: "ko", label: "한국어" },
@@ -11,12 +13,26 @@ const SUBTITLE_LANGUAGES = [
   { value: "zh", label: "中文" },
 ];
 
-/**
- * 실제 인증 연동 전 단계의 placeholder 페이지.
- * 이메일/플랜은 고정값이며, 로그인 가드도 아직 없다.
- */
 export default function AccountView() {
+  const router = useRouter();
+  const [user, setUser] = useState<AuthUser | null>(null);
   const [subtitleLanguage, setSubtitleLanguage] = useState("ko");
+
+  useEffect(() => {
+    const auth = getAuth();
+    if (!auth) {
+      router.replace("/login");
+      return;
+    }
+    setUser(auth.user);
+  }, [router]);
+
+  function handleSignOut() {
+    clearAuth();
+    router.push("/");
+  }
+
+  if (!user) return null;
 
   return (
     <div className="min-h-svh bg-white">
@@ -44,13 +60,13 @@ export default function AccountView() {
         >
           <div className="flex items-center justify-between gap-4 px-6 py-5">
             <span className="text-[14px] font-medium text-[#525252]">Email</span>
-            <span className="text-[15px] text-[#0A0A0A]">user@example.com</span>
+            <span className="text-[15px] text-[#0A0A0A]">{user.email}</span>
           </div>
 
           <div className="flex items-center justify-between gap-4 px-6 py-5">
             <span className="text-[14px] font-medium text-[#525252]">Plan</span>
-            <span className="rounded-[999px] border border-[#EAEAEA] bg-[#FAFAFA] px-3 py-1 text-[13px] font-medium text-[#0A0A0A]">
-              Free
+            <span className="rounded-[999px] border border-[#EAEAEA] bg-[#FAFAFA] px-3 py-1 text-[13px] font-medium text-[#0A0A0A] capitalize">
+              {user.plan}
             </span>
           </div>
 
@@ -91,12 +107,13 @@ export default function AccountView() {
           </div>
         </div>
 
-        <Link
-          href="/"
-          className="mt-8 inline-block text-[14px] font-medium text-[#525252] transition-colors hover:text-[#0A0A0A]"
+        <button
+          type="button"
+          onClick={handleSignOut}
+          className="mt-8 text-[14px] font-medium text-[#525252] transition-colors hover:text-[#0A0A0A]"
         >
           Sign out
-        </Link>
+        </button>
       </main>
     </div>
   );

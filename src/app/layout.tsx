@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import MetaPixel from "@/components/MetaPixel";
+import GoogleOAuthProviderWrapper from "@/components/GoogleOAuthProviderWrapper";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kaptik.site"),
@@ -41,7 +42,9 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <MetaPixel />
-        {children}
+        <GoogleOAuthProviderWrapper>
+          {children}
+        </GoogleOAuthProviderWrapper>
         {/* Vercel Analytics — 방문자 수 + signup 전환 이벤트 집계 */}
         <Analytics />
       </body>
