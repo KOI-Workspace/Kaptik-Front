@@ -1,12 +1,18 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { getAuth } from "@/lib/auth";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    setIsLoggedIn(!!getAuth());
+  }, [pathname]);
 
   const scrollToSection = useCallback((id: string) => {
     if (pathname !== "/") {
@@ -73,12 +79,21 @@ export default function Header() {
           >
             Pricing
           </Link>
-          <Link
-            href="/login"
-            className="hidden rounded-[999px] bg-[#0A0A0A] px-6 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none sm:block"
-          >
-            Sign in
-          </Link>
+          {isLoggedIn ? (
+            <Link
+              href="/account"
+              className="hidden rounded-[999px] bg-[#0A0A0A] px-6 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none sm:block"
+            >
+              My account
+            </Link>
+          ) : (
+            <Link
+              href="/login"
+              className="hidden rounded-[999px] bg-[#0A0A0A] px-6 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none sm:block"
+            >
+              Sign in
+            </Link>
+          )}
 
           {/* Mobile menu button */}
           <button
@@ -150,14 +165,25 @@ export default function Header() {
             >
               Pricing
             </Link>
-            <Link
-              href="/login"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-left text-lg font-medium"
-              style={{ color: "#0A0A0A" }}
-            >
-              Sign in
-            </Link>
+            {isLoggedIn ? (
+              <Link
+                href="/account"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-left text-lg font-medium"
+                style={{ color: "#0A0A0A" }}
+              >
+                My account
+              </Link>
+            ) : (
+              <Link
+                href="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-left text-lg font-medium"
+                style={{ color: "#0A0A0A" }}
+              >
+                Sign in
+              </Link>
+            )}
           </nav>
         </div>
       )}
