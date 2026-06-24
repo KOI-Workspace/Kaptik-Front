@@ -2,6 +2,9 @@ export interface AuthUser {
   email: string;
   plan: string;
   userId: string;
+  name?: string;
+  picture?: string;
+  subtitleLang?: string;
 }
 
 const TOKEN_COOKIE = "kaptik_token";
@@ -44,17 +47,28 @@ export async function loginWithGoogle(idToken: string, email: string): Promise<A
   }
 
   const data = (await res.json()) as { access_token: string; plan: string; user_id: string };
-  const user: AuthUser = { email, plan: data.plan, userId: data.user_id };
+  const decoded = decodeGoogleIdToken(idToken);
+  const user: AuthUser = {
+    email,
+    plan: data.plan,
+    userId: data.user_id,
+    name: decoded?.name,
+    picture: decoded?.picture,
+  };
   saveAuth(data.access_token, user);
   return user;
 }
 
-/** Google ID 토큰(JWT)에서 페이로드를 디코딩해 이메일을 추출합니다. */
-export function decodeGoogleIdToken(idToken: string): { email: string } | null {
+/** Google ID 토큰(JWT)에서 페이로드를 디코딩해 프로필 정보를 추출합니다. */
+export function decodeGoogleIdToken(idToken: string): { email: string; name?: string; picture?: string } | null {
   try {
     const payload = idToken.split(".")[1];
     const decoded = JSON.parse(atob(payload.replace(/-/g, "+").replace(/_/g, "/")));
-    return { email: decoded.email as string };
+    return {
+      email: decoded.email as string,
+      name: decoded.name as string | undefined,
+      picture: decoded.picture as string | undefined,
+    };
   } catch {
     return null;
   }

@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import InstallExtensionButton from "./InstallExtensionButton";
-import { getAuth, clearAuth, type AuthUser } from "@/lib/auth";
+import { getAuth, clearAuth, saveAuth, type AuthUser } from "@/lib/auth";
 
 const SUBTITLE_LANGUAGES = [
   { value: "ko", label: "한국어" },
@@ -13,10 +14,13 @@ const SUBTITLE_LANGUAGES = [
   { value: "zh", label: "中文" },
 ];
 
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 export default function AccountView() {
   const router = useRouter();
   const [user, setUser] = useState<AuthUser | null>(null);
-  const [subtitleLanguage, setSubtitleLanguage] = useState("ko");
+  const [subtitleLanguage, setSubtitleLanguage] = useState("en");
+  const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
     const auth = getAuth();
@@ -25,7 +29,38 @@ export default function AccountView() {
       return;
     }
     setUser(auth.user);
+    setToken(auth.token);
+
+    fetch(`${API_URL}/users/me`, {
+      headers: { Authorization: `Bearer ${auth.token}` },
+    })
+      .then((r) => r.ok ? r.json() : null)
+      .then((data) => {
+        if (data?.subtitle_lang) {
+          setSubtitleLanguage(data.subtitle_lang);
+          saveAuth(auth.token, { ...auth.user, subtitleLang: data.subtitle_lang });
+        }
+      })
+      .catch(() => {});
   }, [router]);
+
+  async function handleSubtitleLanguageChange(lang: string) {
+    setSubtitleLanguage(lang);
+    if (!token || !user) return;
+    try {
+      await fetch(`${API_URL}/users/me`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ subtitle_lang: lang }),
+      });
+      saveAuth(token, { ...user, subtitleLang: lang });
+    } catch {
+      // 저장 실패 시 UI는 낙관적으로 유지
+    }
+  }
 
   function handleSignOut() {
     clearAuth();
@@ -47,12 +82,24 @@ export default function AccountView() {
       </header>
 
       <main className="mx-auto max-w-[560px] px-6 py-12 md:py-16">
-        <h1
-          className="text-2xl font-bold tracking-tight"
-          style={{ color: "#0A0A0A", letterSpacing: "-0.03em" }}
-        >
-          Account
-        </h1>
+        <div className="flex items-center gap-4">
+          {user.picture && (
+            <Image
+              src={user.picture}
+              alt={user.name ?? user.email}
+              width={48}
+              height={48}
+              className="rounded-full"
+              referrerPolicy="no-referrer"
+            />
+          )}
+          <h1
+            className="text-2xl font-bold tracking-tight"
+            style={{ color: "#0A0A0A", letterSpacing: "-0.03em" }}
+          >
+            {user.name ?? "Account"}
+          </h1>
+        </div>
 
         <div
           className="mt-8 divide-y divide-[#EAEAEA] rounded-[24px] border border-[#EAEAEA]"
@@ -80,7 +127,7 @@ export default function AccountView() {
             <select
               id="subtitle-language"
               value={subtitleLanguage}
-              onChange={(e) => setSubtitleLanguage(e.target.value)}
+              onChange={(e) => handleSubtitleLanguageChange(e.target.value)}
               className="rounded-lg border border-[#EAEAEA] px-3 py-2 text-[14px] text-[#0A0A0A] outline-none focus:ring-2 focus:ring-[#8B5CF6]/40"
             >
               {SUBTITLE_LANGUAGES.map((lang) => (
