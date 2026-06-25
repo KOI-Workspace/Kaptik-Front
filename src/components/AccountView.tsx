@@ -60,9 +60,17 @@ export default function AccountView() {
     })
       .then((r) => r.ok ? r.json() : null)
       .then((data) => {
-        if (data?.subtitle_lang) {
-          setSubtitleLanguage(data.subtitle_lang);
-          saveAuth(auth.token, { ...auth.user, subtitleLang: data.subtitle_lang });
+        if (data) {
+          const updatedUser = { ...auth.user };
+          if (data.subtitle_lang) {
+            updatedUser.subtitleLang = data.subtitle_lang;
+            setSubtitleLanguage(data.subtitle_lang);
+          }
+          if (data.plan) {
+            updatedUser.plan = data.plan;
+            setUser(updatedUser);
+          }
+          saveAuth(auth.token, updatedUser);
         }
       })
       .catch(() => {});
