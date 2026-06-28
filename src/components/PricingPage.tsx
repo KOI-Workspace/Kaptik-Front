@@ -1,11 +1,7 @@
 "use client";
 
-import { useCallback, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import WaitlistBubble from "./WaitlistBubble";
-import WaitlistForm from "./WaitlistForm";
-import ThankYouModal from "./ThankYouModal";
 
 const pricingPlans = [
   {
@@ -30,12 +26,6 @@ const pricingPlans = [
 ];
 
 export default function PricingPage() {
-  const [thankYouOpen, setThankYouOpen] = useState(false);
-
-  const handleWaitlistSuccess = useCallback(() => {
-    setThankYouOpen(true);
-  }, []);
-
   return (
     <div className="relative z-10 min-h-screen bg-white">
       <Header />
@@ -52,10 +42,6 @@ export default function PricingPage() {
             >
               Choose the plan that fits your fandom life.
             </h1>
-          </div>
-
-          <div className="mb-10 flex justify-center">
-            <WaitlistBubble />
           </div>
 
           <div className="mx-auto grid max-w-[760px] grid-cols-1 justify-center gap-3 sm:grid-cols-2 sm:gap-5">
@@ -105,15 +91,9 @@ export default function PricingPage() {
               </article>
             ))}
           </div>
-
-          <div className="mt-6 flex justify-center">
-            <WaitlistForm onSuccess={handleWaitlistSuccess} showBubble={false} />
-          </div>
         </section>
       </main>
       <Footer />
-
-      <ThankYouModal isOpen={thankYouOpen} onClose={() => setThankYouOpen(false)} />
     </div>
   );
 }
