@@ -41,7 +41,10 @@ export default function DiscordModal({ isOpen, onClose, email }: DiscordModalPro
   // 안내 단계 (1·2·3)
   const steps = [
     "Join our Discord",
-    "DM your email to the Moderator “Kaptik_developer”",
+    <>
+      DM your email to the Moderator{" "}
+      <strong className="font-bold underline">Kaptik_Developer</strong>
+    </>,
     "We match it and unlock Pro for you",
   ];
 
@@ -91,7 +94,7 @@ export default function DiscordModal({ isOpen, onClose, email }: DiscordModalPro
         {/* 안내 단계 */}
         <ol className="mb-6 space-y-3">
           {steps.map((step, index) => (
-            <li key={step} className="flex items-start gap-3">
+            <li key={index} className="flex items-start gap-3">
               <span
                 className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white"
                 style={{ background: "#8B5CF6" }}
