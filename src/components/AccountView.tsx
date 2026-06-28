@@ -226,9 +226,9 @@ export default function AccountView() {
 
           <div className="flex items-center justify-between gap-4 px-6 py-5">
             <div>
-              <span className="text-[14px] font-medium text-[#525252]">Discord</span>
+              <span className="text-[14px] font-medium text-[#0A0A0A]">Join Discord to Start Beta</span>
               <p className="mt-1 text-[13px] text-[#737373]">
-                Join and share your email to unlock Pro
+                Access for beta test is granted only after you join our Discord and tell us your sign-in email.
               </p>
             </div>
             <a
@@ -238,7 +238,7 @@ export default function AccountView() {
               className="whitespace-nowrap rounded-[999px] px-5 py-2 text-[14px] font-medium text-white transition-colors hover:bg-[#4752C4] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2"
               style={{ background: "#5865F2" }}
             >
-              Join Discord to Start Beta
+              Join Discord
             </a>
           </div>
         </div>
