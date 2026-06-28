@@ -72,24 +72,25 @@ export default function Header() {
         </nav>
 
         {/* CTA - Right */}
-        <div className="relative z-10 flex items-center gap-4">
+        <div className="relative z-10 flex items-center gap-2 sm:gap-4">
           <Link
             href="/pricing"
             className="hidden rounded-[999px] border border-[#EAEAEA] bg-white px-5 py-2.5 text-[14px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#FAFAFA] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2 sm:block"
           >
             Pricing
           </Link>
+          {/* My account / Sign in: 모바일에서도 항상 노출 (모바일은 패딩·폰트를 살짝 줄여 햄버거와 나란히 배치) */}
           {isLoggedIn ? (
             <Link
               href="/account"
-              className="hidden rounded-[999px] bg-[#0A0A0A] px-6 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none sm:block"
+              className="rounded-[999px] bg-[#0A0A0A] px-4 py-2 text-[13px] font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none sm:px-6 sm:py-2.5 sm:text-[14px]"
             >
               My account
             </Link>
           ) : (
             <Link
               href="/login"
-              className="hidden rounded-[999px] bg-[#0A0A0A] px-6 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none sm:block"
+              className="rounded-[999px] bg-[#0A0A0A] px-4 py-2 text-[13px] font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none sm:px-6 sm:py-2.5 sm:text-[14px]"
             >
               Sign in
             </Link>
