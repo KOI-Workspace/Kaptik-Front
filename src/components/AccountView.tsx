@@ -238,7 +238,7 @@ export default function AccountView() {
               className="whitespace-nowrap rounded-[999px] px-5 py-2 text-[14px] font-medium text-white transition-colors hover:bg-[#4752C4] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2"
               style={{ background: "#5865F2" }}
             >
-              Join Discord
+              Join Discord to Start Beta
             </a>
           </div>
         </div>
