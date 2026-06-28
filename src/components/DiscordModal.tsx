@@ -134,8 +134,8 @@ export default function DiscordModal({ isOpen, onClose, email }: DiscordModalPro
           href={DISCORD_INVITE_LINK}
           target="_blank"
           rel="noopener noreferrer"
-          className="block w-full rounded-[999px] px-8 py-3 text-center text-base font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2"
-          style={{ background: "#0A0A0A" }}
+          className="block w-full rounded-[999px] px-8 py-3 text-center text-base font-medium text-white transition-colors hover:bg-[#4752C4] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2"
+          style={{ background: "#5865F2" }}
         >
           Join our Discord
         </a>
