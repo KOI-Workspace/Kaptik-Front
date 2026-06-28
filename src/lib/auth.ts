@@ -35,7 +35,10 @@ export function clearAuth(): void {
   localStorage.removeItem(USER_KEY);
 }
 
-export async function loginWithGoogle(idToken: string, email: string): Promise<AuthUser> {
+export async function loginWithGoogle(
+  idToken: string,
+  email: string,
+): Promise<{ user: AuthUser; isNewUser: boolean }> {
   const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
   const res = await fetch(`${apiUrl}/auth/google`, {
     method: "POST",
@@ -48,7 +51,13 @@ export async function loginWithGoogle(idToken: string, email: string): Promise<A
     throw new Error(err || "로그인에 실패했습니다.");
   }
 
-  const data = (await res.json()) as { access_token: string; plan: string; user_id: string };
+  // is_new_user: 백엔드가 이번 로그인이 '최초 가입'일 때만 true로 내려준다. 없으면 신규로 보지 않음.
+  const data = (await res.json()) as {
+    access_token: string;
+    plan: string;
+    user_id: string;
+    is_new_user?: boolean;
+  };
   const decoded = decodeGoogleIdToken(idToken);
   const user: AuthUser = {
     email,
@@ -58,7 +67,7 @@ export async function loginWithGoogle(idToken: string, email: string): Promise<A
     picture: decoded?.picture,
   };
   saveAuth(data.access_token, user);
-  return user;
+  return { user, isNewUser: data.is_new_user === true };
 }
 
 /** Google ID 토큰(JWT)에서 페이로드를 디코딩해 프로필 정보를 추출합니다. */
