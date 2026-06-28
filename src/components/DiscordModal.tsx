@@ -12,8 +12,8 @@ interface DiscordModalProps {
 
 /**
  * 로그인 직후 노출되는 디스코드 가입 안내 모달.
- * 베타 테스터는 확장프로그램 설치만으로 끝이 아니라, 디스코드에 들어와
- * 본인 이메일을 공유해야 Pro 권한을 받을 수 있다는 점을 안내한다.
+ * 베타 테스터는 디스코드에 들어와 모더레이터(Kaptik_developer)에게 DM으로
+ * 본인 이메일을 보내야 Pro 권한을 받을 수 있다는 점을 안내한다.
  */
 export default function DiscordModal({ isOpen, onClose, email }: DiscordModalProps) {
   const [copied, setCopied] = useState(false);
@@ -41,7 +41,7 @@ export default function DiscordModal({ isOpen, onClose, email }: DiscordModalPro
   // 안내 단계 (1·2·3)
   const steps = [
     "Join our Discord",
-    "Share the email you signed in with",
+    "DM your email to the Moderator “Kaptik_developer”",
     "We match it and unlock Pro for you",
   ];
 
@@ -82,15 +82,11 @@ export default function DiscordModal({ isOpen, onClose, email }: DiscordModalPro
 
         <h2
           id="discord-modal-title"
-          className="mb-2 pr-8 text-2xl font-bold"
+          className="mb-6 pr-8 text-2xl font-bold"
           style={{ color: "#0A0A0A", letterSpacing: "-0.03em" }}
         >
-          One last step to unlock Pro
+          One last step to start the beta test.
         </h2>
-        <p className="mb-6 text-[15px] leading-relaxed" style={{ color: "#525252" }}>
-          Installing the extension isn&apos;t enough. We grant Pro access manually to
-          beta testers who join our Discord.
-        </p>
 
         {/* 안내 단계 */}
         <ol className="mb-6 space-y-3">
@@ -139,11 +135,6 @@ export default function DiscordModal({ isOpen, onClose, email }: DiscordModalPro
         >
           Join our Discord
         </a>
-
-        <p className="mt-4 text-center text-[13px] leading-relaxed text-[#737373]">
-          Already done? You can close this — we&apos;ll unlock Pro once we match your
-          email in Discord.
-        </p>
       </div>
     </div>
   );
