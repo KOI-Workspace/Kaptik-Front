@@ -5,8 +5,8 @@ export interface AuthUser {
   name?: string;
   picture?: string;
   subtitleLang?: string;
-  /** 베타 시작일(ISO 문자열). 백엔드가 /users/me 응답의 beta_started_at으로 내려준다. 이 날짜 +30일이 Pro 베타 만료일. */
-  betaStartedAt?: string;
+  /** 만료일(ISO 문자열). 백엔드가 /users/me 응답의 plan_expires_at으로 내려준다. */
+  planExpiresAt?: string;
 }
 
 const TOKEN_COOKIE = "kaptik_token";

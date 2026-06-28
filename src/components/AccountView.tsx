@@ -43,14 +43,11 @@ const SUBTITLE_LANGUAGES = [
 const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 /**
- * 베타 시작일(로그인/가입 기준일, ISO 문자열)을 받아 +30일 만료일을 "MM.DD"로 반환합니다.
- * 백엔드가 /users/me 응답에 beta_started_at을 내려주면 자동으로 연결됩니다. 잘못된 값이면 null.
+ * 만료일(ISO 문자열)을 받아 "MM.DD"로 반환합니다.
  */
-function formatBetaExpireDate(startedAt: string): string | null {
-  const start = new Date(startedAt);
-  if (isNaN(start.getTime())) return null;
-  const expire = new Date(start);
-  expire.setDate(expire.getDate() + 30);
+function formatExpireDate(expiresAt: string): string | null {
+  const expire = new Date(expiresAt);
+  if (isNaN(expire.getTime())) return null;
   const mm = String(expire.getMonth() + 1).padStart(2, "0");
   const dd = String(expire.getDate()).padStart(2, "0");
   return `${mm}.${dd}`;
@@ -92,8 +89,8 @@ export default function AccountView() {
           if (data.plan) {
             updatedUser.plan = data.plan;
           }
-          if (data.beta_started_at) {
-            updatedUser.betaStartedAt = data.beta_started_at;
+          if (data.plan_expires_at) {
+            updatedUser.planExpiresAt = data.plan_expires_at;
           }
           setUser(updatedUser);
           saveAuth(auth.token, updatedUser);
@@ -127,10 +124,10 @@ export default function AccountView() {
 
   if (!user) return null;
 
-  // Pro 베타 만료일(로그인일 +30일). Pro 플랜이고 백엔드가 시작일을 내려준 경우에만 표시.
+  // Pro/Basic 베타 만료일.
   const betaExpireDate =
-    user.plan?.toLowerCase() === "pro" && user.betaStartedAt
-      ? formatBetaExpireDate(user.betaStartedAt)
+    ["pro", "basic"].includes(user.plan?.toLowerCase() ?? "") && user.planExpiresAt
+      ? formatExpireDate(user.planExpiresAt)
       : null;
 
   return (
