@@ -42,6 +42,20 @@ const SUBTITLE_LANGUAGES = [
 
 const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
+/**
+ * 베타 시작일(로그인/가입 기준일, ISO 문자열)을 받아 +30일 만료일을 "MM.DD"로 반환합니다.
+ * 백엔드가 /users/me 응답에 beta_started_at을 내려주면 자동으로 연결됩니다. 잘못된 값이면 null.
+ */
+function formatBetaExpireDate(startedAt: string): string | null {
+  const start = new Date(startedAt);
+  if (isNaN(start.getTime())) return null;
+  const expire = new Date(start);
+  expire.setDate(expire.getDate() + 30);
+  const mm = String(expire.getMonth() + 1).padStart(2, "0");
+  const dd = String(expire.getDate()).padStart(2, "0");
+  return `${mm}.${dd}`;
+}
+
 export default function AccountView() {
   const router = useRouter();
   const [user, setUser] = useState<AuthUser | null>(null);
@@ -77,8 +91,11 @@ export default function AccountView() {
           }
           if (data.plan) {
             updatedUser.plan = data.plan;
-            setUser(updatedUser);
           }
+          if (data.beta_started_at) {
+            updatedUser.betaStartedAt = data.beta_started_at;
+          }
+          setUser(updatedUser);
           saveAuth(auth.token, updatedUser);
         }
       })
@@ -109,6 +126,12 @@ export default function AccountView() {
   }
 
   if (!user) return null;
+
+  // Pro 베타 만료일(로그인일 +30일). Pro 플랜이고 백엔드가 시작일을 내려준 경우에만 표시.
+  const betaExpireDate =
+    user.plan?.toLowerCase() === "pro" && user.betaStartedAt
+      ? formatBetaExpireDate(user.betaStartedAt)
+      : null;
 
   return (
     <div className="min-h-svh bg-white">
@@ -153,9 +176,16 @@ export default function AccountView() {
 
           <div className="flex items-center justify-between gap-4 px-6 py-5">
             <span className="text-[14px] font-medium text-[#525252]">Plan</span>
-            <span className="rounded-[999px] border border-[#EAEAEA] bg-[#FAFAFA] px-3 py-1 text-[13px] font-medium text-[#0A0A0A] capitalize">
-              {user.plan}
-            </span>
+            <div className="flex items-center gap-3">
+              {betaExpireDate && (
+                <span className="whitespace-nowrap text-[13px] text-[#737373]">
+                  Beta Testing Expire Date: {betaExpireDate}
+                </span>
+              )}
+              <span className="rounded-[999px] border border-[#EAEAEA] bg-[#FAFAFA] px-3 py-1 text-[13px] font-medium text-[#0A0A0A] capitalize">
+                {user.plan}
+              </span>
+            </div>
           </div>
 
           <div className="flex items-center justify-between gap-4 px-6 py-5">
