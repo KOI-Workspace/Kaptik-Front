@@ -1,12 +1,18 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { getAuth } from "@/lib/auth";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    setIsLoggedIn(!!getAuth());
+  }, [pathname]);
 
   const scrollToSection = useCallback((id: string) => {
     if (pathname !== "/") {
@@ -73,13 +79,22 @@ export default function Header() {
           >
             Pricing
           </Link>
-          {/* Sign in: 모바일에서도 항상 노출 (모바일은 패딩·폰트를 살짝 줄여 햄버거와 나란히 배치) */}
-          <Link
-            href="/login"
-            className="rounded-[999px] bg-[#0A0A0A] px-4 py-2 text-[13px] font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none sm:px-6 sm:py-2.5 sm:text-[14px]"
-          >
-            Sign in
-          </Link>
+          {/* My account / Sign in: 모바일에서도 항상 노출 (모바일은 패딩·폰트를 살짝 줄여 햄버거와 나란히 배치) */}
+          {isLoggedIn ? (
+            <Link
+              href="/account"
+              className="rounded-[999px] bg-[#0A0A0A] px-4 py-2 text-[13px] font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none sm:px-6 sm:py-2.5 sm:text-[14px]"
+            >
+              My account
+            </Link>
+          ) : (
+            <Link
+              href="/login"
+              className="rounded-[999px] bg-[#0A0A0A] px-4 py-2 text-[13px] font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none sm:px-6 sm:py-2.5 sm:text-[14px]"
+            >
+              Sign in
+            </Link>
+          )}
 
           {/* Mobile menu button */}
           <button
@@ -151,6 +166,25 @@ export default function Header() {
             >
               Pricing
             </Link>
+            {isLoggedIn ? (
+              <Link
+                href="/account"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-left text-lg font-medium"
+                style={{ color: "#0A0A0A" }}
+              >
+                My account
+              </Link>
+            ) : (
+              <Link
+                href="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-left text-lg font-medium"
+                style={{ color: "#0A0A0A" }}
+              >
+                Sign in
+              </Link>
+            )}
           </nav>
         </div>
       )}

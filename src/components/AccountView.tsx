@@ -3,23 +3,51 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import InstallExtensionButton from "./InstallExtensionButton";
 import DiscordModal from "./DiscordModal";
-import { getAuth, clearAuth, type AuthUser } from "@/lib/auth";
+import { getAuth, clearAuth, saveAuth, type AuthUser } from "@/lib/auth";
 import { DISCORD_INVITE_LINK } from "@/lib/mockData";
 
 const SUBTITLE_LANGUAGES = [
   { value: "ko", label: "한국어" },
   { value: "en", label: "English" },
   { value: "ja", label: "日本語" },
-  { value: "zh", label: "中文" },
+  { value: "zh-CN", label: "简体中文" },
+  { value: "zh-TW", label: "繁體中文" },
+  { value: "id", label: "Bahasa Indonesia" },
+  { value: "es", label: "Español" },
+  { value: "pt", label: "Português" },
+  { value: "fr", label: "Français" },
+  { value: "de", label: "Deutsch" },
+  { value: "it", label: "Italiano" },
+  { value: "ru", label: "Русский" },
+  { value: "pl", label: "Polski" },
+  { value: "cs", label: "Čeština" },
+  { value: "uk", label: "Українська" },
+  { value: "ro", label: "Română" },
+  { value: "th", label: "ภาษาไทย" },
+  { value: "vi", label: "Tiếng Việt" },
+  { value: "tr", label: "Türkçe" },
+  { value: "ar", label: "العربية" },
+  { value: "hi", label: "हिन्दी" },
+  { value: "ms", label: "Bahasa Melayu" },
+  { value: "tl", label: "Filipino" },
+  { value: "sv", label: "Svenska" },
+  { value: "no", label: "Norsk" },
+  { value: "da", label: "Dansk" },
+  { value: "fi", label: "Suomi" },
+  { value: "nl", label: "Nederlands" },
 ];
+
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export default function AccountView() {
   const router = useRouter();
   const [user, setUser] = useState<AuthUser | null>(null);
-  const [subtitleLanguage, setSubtitleLanguage] = useState("ko");
+  const [subtitleLanguage, setSubtitleLanguage] = useState("en");
   const [discordModalOpen, setDiscordModalOpen] = useState(false);
+  const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
     const auth = getAuth();
@@ -28,13 +56,52 @@ export default function AccountView() {
       return;
     }
     setUser(auth.user);
+    setToken(auth.token);
 
     // 로그인 직후 최초 1회만 디스코드 안내 모달 노출
     if (sessionStorage.getItem("kaptik_show_discord_modal") === "1") {
       setDiscordModalOpen(true);
       sessionStorage.removeItem("kaptik_show_discord_modal");
     }
+
+    fetch(`${API_URL}/users/me`, {
+      headers: { Authorization: `Bearer ${auth.token}` },
+    })
+      .then((r) => r.ok ? r.json() : null)
+      .then((data) => {
+        if (data) {
+          const updatedUser = { ...auth.user };
+          if (data.subtitle_lang) {
+            updatedUser.subtitleLang = data.subtitle_lang;
+            setSubtitleLanguage(data.subtitle_lang);
+          }
+          if (data.plan) {
+            updatedUser.plan = data.plan;
+            setUser(updatedUser);
+          }
+          saveAuth(auth.token, updatedUser);
+        }
+      })
+      .catch(() => {});
   }, [router]);
+
+  async function handleSubtitleLanguageChange(lang: string) {
+    setSubtitleLanguage(lang);
+    if (!token || !user) return;
+    try {
+      await fetch(`${API_URL}/users/me`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ subtitle_lang: lang }),
+      });
+      saveAuth(token, { ...user, subtitleLang: lang });
+    } catch {
+      // 저장 실패 시 UI는 낙관적으로 유지
+    }
+  }
 
   function handleSignOut() {
     clearAuth();
@@ -56,12 +123,24 @@ export default function AccountView() {
       </header>
 
       <main className="mx-auto max-w-[560px] px-6 py-12 md:py-16">
-        <h1
-          className="text-2xl font-bold tracking-tight"
-          style={{ color: "#0A0A0A", letterSpacing: "-0.03em" }}
-        >
-          Account
-        </h1>
+        <div className="flex items-center gap-4">
+          {user.picture && (
+            <Image
+              src={user.picture}
+              alt={user.name ?? user.email}
+              width={48}
+              height={48}
+              className="rounded-full"
+              referrerPolicy="no-referrer"
+            />
+          )}
+          <h1
+            className="text-2xl font-bold tracking-tight"
+            style={{ color: "#0A0A0A", letterSpacing: "-0.03em" }}
+          >
+            {user.name ?? "Account"}
+          </h1>
+        </div>
 
         <div
           className="mt-8 divide-y divide-[#EAEAEA] rounded-[24px] border border-[#EAEAEA]"
@@ -89,7 +168,7 @@ export default function AccountView() {
             <select
               id="subtitle-language"
               value={subtitleLanguage}
-              onChange={(e) => setSubtitleLanguage(e.target.value)}
+              onChange={(e) => handleSubtitleLanguageChange(e.target.value)}
               className="rounded-lg border border-[#EAEAEA] px-3 py-2 text-[14px] text-[#0A0A0A] outline-none focus:ring-2 focus:ring-[#8B5CF6]/40"
             >
               {SUBTITLE_LANGUAGES.map((lang) => (
