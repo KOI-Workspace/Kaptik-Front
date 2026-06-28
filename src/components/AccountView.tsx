@@ -43,14 +43,17 @@ const SUBTITLE_LANGUAGES = [
 const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 /**
- * 만료일(ISO 문자열)을 받아 "MM.DD"로 반환합니다.
+ * 만료일(ISO 문자열)을 받아 영어권 표기(예: "Jul 28, 2026")로 반환합니다.
+ * 백엔드가 /users/me 응답의 plan_expires_at으로 내려준다. 잘못된 값이면 null.
  */
 function formatExpireDate(expiresAt: string): string | null {
   const expire = new Date(expiresAt);
   if (isNaN(expire.getTime())) return null;
-  const mm = String(expire.getMonth() + 1).padStart(2, "0");
-  const dd = String(expire.getDate()).padStart(2, "0");
-  return `${mm}.${dd}`;
+  return expire.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
 }
 
 export default function AccountView() {
@@ -176,7 +179,10 @@ export default function AccountView() {
             <div className="flex items-center gap-3">
               {betaExpireDate && (
                 <span className="whitespace-nowrap text-[13px] text-[#737373]">
-                  Beta Testing Expire Date: {betaExpireDate}
+                  Beta Testing Expire Date:{" "}
+                  <strong className="font-bold underline text-[#0A0A0A]">
+                    {betaExpireDate}
+                  </strong>
                 </span>
               )}
               <span className="rounded-[999px] border border-[#EAEAEA] bg-[#FAFAFA] px-3 py-1 text-[13px] font-medium text-[#0A0A0A] capitalize">
