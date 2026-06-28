@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import InstallExtensionButton from "./InstallExtensionButton";
+import DiscordModal from "./DiscordModal";
 import { getAuth, clearAuth, type AuthUser } from "@/lib/auth";
+import { DISCORD_INVITE_LINK } from "@/lib/mockData";
 
 const SUBTITLE_LANGUAGES = [
   { value: "ko", label: "한국어" },
@@ -17,6 +19,7 @@ export default function AccountView() {
   const router = useRouter();
   const [user, setUser] = useState<AuthUser | null>(null);
   const [subtitleLanguage, setSubtitleLanguage] = useState("ko");
+  const [discordModalOpen, setDiscordModalOpen] = useState(false);
 
   useEffect(() => {
     const auth = getAuth();
@@ -25,6 +28,12 @@ export default function AccountView() {
       return;
     }
     setUser(auth.user);
+
+    // 로그인 직후 최초 1회만 디스코드 안내 모달 노출
+    if (sessionStorage.getItem("kaptik_show_discord_modal") === "1") {
+      setDiscordModalOpen(true);
+      sessionStorage.removeItem("kaptik_show_discord_modal");
+    }
   }, [router]);
 
   function handleSignOut() {
@@ -105,6 +114,24 @@ export default function AccountView() {
             <span className="text-[14px] font-medium text-[#525252]">Chrome extension</span>
             <InstallExtensionButton />
           </div>
+
+          <div className="flex items-center justify-between gap-4 px-6 py-5">
+            <div>
+              <span className="text-[14px] font-medium text-[#525252]">Discord</span>
+              <p className="mt-1 text-[13px] text-[#737373]">
+                Join and share your email to unlock Pro
+              </p>
+            </div>
+            <a
+              href={DISCORD_INVITE_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="whitespace-nowrap rounded-[999px] px-5 py-2 text-[14px] font-medium text-white transition-colors hover:bg-[#262626] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:ring-offset-2"
+              style={{ background: "#0A0A0A" }}
+            >
+              Join Discord
+            </a>
+          </div>
         </div>
 
         <button
@@ -115,6 +142,12 @@ export default function AccountView() {
           Sign out
         </button>
       </main>
+
+      <DiscordModal
+        isOpen={discordModalOpen}
+        onClose={() => setDiscordModalOpen(false)}
+        email={user.email}
+      />
     </div>
   );
 }

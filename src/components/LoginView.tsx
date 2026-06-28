@@ -20,6 +20,8 @@ export default function LoginView() {
     try {
       const decoded = decodeGoogleIdToken(idToken);
       await loginWithGoogle(idToken, decoded?.email ?? "");
+      // 로그인 직후 account에서 디스코드 안내 모달을 띄우기 위한 플래그
+      sessionStorage.setItem("kaptik_show_discord_modal", "1");
       router.push("/account");
     } catch (err) {
       setError(err instanceof Error ? err.message : "로그인에 실패했습니다. 다시 시도해 주세요.");
