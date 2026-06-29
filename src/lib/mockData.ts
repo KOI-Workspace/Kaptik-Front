@@ -7,7 +7,7 @@ export const MOCK_WAITLIST_COUNT = 1247;
 export const MOCK_SITE_LINK = "https://kaptik.site/";
 
 // 베타 테스터가 Pro 권한을 받기 위해 들어와야 하는 디스코드 초대 링크
-export const DISCORD_INVITE_LINK = "https://discord.gg/X2J5U4G4k";
+export const DISCORD_INVITE_LINK = "https://discord.gg/N3sWHyYcTu";
 
 export const PRIVACY_POLICY_LINK = "https://notion.so/kaptik-privacy"; // Placeholder - user will provide later
 
