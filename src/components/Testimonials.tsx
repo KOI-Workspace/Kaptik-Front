@@ -52,7 +52,8 @@ export default function Testimonials() {
             </svg>
           </button>
 
-          <div className="flex flex-1 items-stretch justify-center gap-4">
+          {/* min-h로 행 높이를 고정해, 후기 길이가 달라도 섹션 높이(=푸터 위치)가 흔들리지 않게 함 */}
+          <div className="flex min-h-[320px] flex-1 items-stretch justify-center gap-4 md:min-h-[280px] lg:min-h-[260px]">
             {[0, 1, 2].map((slotIndex) => {
               const t = testimonials[getTestimonialIndex(currentIndex, slotIndex)];
 
