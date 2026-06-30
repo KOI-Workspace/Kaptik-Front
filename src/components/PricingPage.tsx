@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -42,6 +43,20 @@ export default function PricingPage() {
             >
               Choose the plan that fits your fandom life.
             </h1>
+          </div>
+
+          {/* 베타 안내 보라 버블 — 클릭하면 구글 로그인(/login)으로 이동 */}
+          <div className="mx-auto mb-10 flex max-w-[760px] justify-center sm:mb-12">
+            <p className="waitlist-bubble relative whitespace-nowrap rounded-[999px] border border-[#C4B5FD] bg-[#8B5CF6] px-3.5 py-2 text-center text-[11px] font-medium leading-none text-white shadow-[0_10px_24px_rgba(139,92,246,0.22)] sm:px-5 sm:py-2.5 sm:text-sm">
+              All plans are free right now — start your{" "}
+              <Link
+                href="/login"
+                className="font-bold text-white underline underline-offset-2 transition-opacity hover:opacity-80"
+              >
+                Beta Testing
+              </Link>{" "}
+              today.
+            </p>
           </div>
 
           <div className="mx-auto grid max-w-[760px] grid-cols-1 justify-center gap-3 sm:grid-cols-2 sm:gap-5">
