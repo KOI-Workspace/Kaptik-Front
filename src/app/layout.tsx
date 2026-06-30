@@ -6,23 +6,16 @@ import GoogleOAuthProviderWrapper from "@/components/GoogleOAuthProviderWrapper"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kaptik.site"),
-  title: "Kaptik — Ultimate Subtitle for Kpop Fans",
+  title: "Kaptik — Watch Korean content with real context",
   description:
     "For every Kpop moment. Accurate subtitles with speaker identification, fandom glossary, and support across Bubble, Weverse, YouTube & more.",
   openGraph: {
-    title: "Kaptik — Ultimate Subtitle for Kpop Fans",
+    title: "Kaptik — Watch Korean content with real context",
     description:
       "For every Kpop moment. Accurate subtitles with speaker identification, fandom glossary, and support across Bubble, Weverse, YouTube & more.",
     url: "https://kaptik.site/",
     type: "website",
-    images: [
-      {
-        url: "/Kaptik Opengrah.png",
-        width: 1024,
-        height: 475,
-        alt: "Kaptik",
-      },
-    ],
+    // OG 이미지는 src/app/opengraph-image.tsx 에서 동적 생성 → 자동으로 og:image 주입
   },
 };
 
