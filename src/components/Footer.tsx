@@ -33,6 +33,9 @@ export default function Footer() {
               <Link href="/#faq" className="transition-colors hover:text-white">
                 FAQ
               </Link>
+              <Link href="/privacy" className="transition-colors hover:text-white">
+                Privacy Policy
+              </Link>
             </nav>
           </div>
 
