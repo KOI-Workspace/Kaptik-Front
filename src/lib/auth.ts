@@ -70,6 +70,45 @@ export async function loginWithGoogle(
   return { user, isNewUser: data.is_new_user === true };
 }
 
+/**
+ * 테스터(심사자) 전용 로그인. Google 계정 없이 이름/비밀번호로 로그인한다.
+ * CWS 심사자가 디스코드 화이트리스트 절차 없이 기능을 검토할 수 있도록 제공.
+ * 백엔드 연결은 개발자가 `/auth/tester` 엔드포인트를 구현하면 그대로 동작한다.
+ */
+export async function loginAsTester(
+  username: string,
+  password: string,
+): Promise<{ user: AuthUser; isNewUser: boolean }> {
+  const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const res = await fetch(`${apiUrl}/auth/tester`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+  });
+
+  if (!res.ok) {
+    // 401 등 자격 증명 오류는 사용자에게 명확한 메시지로 노출
+    throw new Error("Invalid tester name or password.");
+  }
+
+  const data = (await res.json()) as {
+    access_token: string;
+    plan: string;
+    user_id: string;
+    email?: string;
+    name?: string;
+    is_new_user?: boolean;
+  };
+  const user: AuthUser = {
+    email: data.email ?? username,
+    plan: data.plan,
+    userId: data.user_id,
+    name: data.name,
+  };
+  saveAuth(data.access_token, user);
+  return { user, isNewUser: data.is_new_user === true };
+}
+
 /** Google ID 토큰(JWT)에서 페이로드를 디코딩해 프로필 정보를 추출합니다. */
 export function decodeGoogleIdToken(idToken: string): { email: string; name?: string; picture?: string } | null {
   try {
